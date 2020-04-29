@@ -1,18 +1,7 @@
-### ENTRNCE Helm Repository
+# ENTRNCE Helm Repository
 
+Welcome to the ENTRNCE charts repository. All charts are in the charts directory.
 
-# Add helm chart
-```bash
-helm package my-app-chart 
-```
-This will create tgz file with chart in current directory
+## Adding the chart Repository
 
-# Add helm chart to index
-```bash
-helm repo index .
-```
-
-# Update helm
-```bash
-helm repo update
-```
+`helm repo add entrnce https://energyexchangeenablersbv.github.io/entrnce-helm-repository`

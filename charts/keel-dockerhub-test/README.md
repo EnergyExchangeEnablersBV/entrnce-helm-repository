@@ -42,7 +42,7 @@ helm install --name my-release -f values.yaml stable/spring
 | Parameter | Description | Default |
 |-----------|-------------|---------|
 | `replicaCount` | The number of replicas | `1` |
-| `image.repository`  | location of image to run | `paulczar/petclinic` |
+| `image.repository`  | location of image to run | `energyexchangeenablers/keel-dockerhub-test` |
 | `image.tag`         | **server** image tag | `2.2.6.BUILD-SNAPSHOT` |
 | `image.pullPolicy`  | **server** image pull policy | `IfNotPresent` |
 | `serviceAccount.create` | If true, create and use service account | `true` |
