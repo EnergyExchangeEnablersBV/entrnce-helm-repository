@@ -1,0 +1,15 @@
+apiVersion: v1
+appVersion: 2.1.0.BUILD-SNAPSHOT
+description: Helm chart for deploying basic Spring applications with Keel
+name: keel-dockerhub-test
+keywords:
+- spring
+- spring-cloud
+home: https://spring.io
+icon: https://spring.io/img/homepage/icon-spring-boot.svg
+sources:
+  - https://github.com/paulczar/helm-chart-spring
+version: 0.0.1
+maintainers:
+  - name: Nick Hartjes
+    email: nick.hartjes@entrnce.com
