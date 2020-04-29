@@ -8,8 +8,8 @@ keywords:
 home: https://spring.io
 icon: https://spring.io/img/homepage/icon-spring-boot.svg
 sources:
-  - https://github.com/paulczar/helm-chart-spring
-version: 0.0.2
+  - https://github.com/EnergyExchangeEnablersBV/keel-dockerhub-test
+version: 0.0.3
 maintainers:
   - name: Nick Hartjes
     email: nick.hartjes@entrnce.com
