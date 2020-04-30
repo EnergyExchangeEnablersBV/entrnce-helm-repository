@@ -8,11 +8,11 @@ metadata:
     chart: {{ include "spring.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
-    keel.sh/policy: {{ .Values.keel.trigger | all }}
-    keel.sh/trigger: {{ .Values.keel.policy | poll }}
-    keel.sh/trigger: {{ .Values.keel.approvals | "1" }}
+    keel.sh/policy: {{ .Values.keel.trigger | default all }}
+    keel.sh/trigger: {{ .Values.keel.policy | default poll }}
+    keel.sh/trigger: {{ .Values.keel.approvals | default "1" }}
   annotations:
-      keel.sh/pollSchedule: {{ .Values.keel.pollSchedule | "@every 10m" }}
+      keel.sh/pollSchedule: {{ .Values.keel.pollSchedule | default "@every 10m" }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
