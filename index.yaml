@@ -3,6 +3,25 @@ entries:
   keel-dockerhub-test:
   - apiVersion: v1
     appVersion: 2.1.0.BUILD-SNAPSHOT
+    created: "2020-04-30T08:00:49.736369125Z"
+    description: Helm chart for deploying basic Spring applications with Keel
+    digest: d14934c2ba577f8b91e102182fb8f9d7f5be055b0a42fadbcf66e48ed60691fa
+    home: https://spring.io
+    icon: https://spring.io/img/homepage/icon-spring-boot.svg
+    keywords:
+    - spring
+    - spring-cloud
+    maintainers:
+    - email: nick.hartjes@entrnce.com
+      name: Nick Hartjes
+    name: keel-dockerhub-test
+    sources:
+    - https://github.com/EnergyExchangeEnablersBV/keel-dockerhub-test
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/keel-dockerhub-test-0.0.6/keel-dockerhub-test-0.0.6.tgz
+    version: 0.0.6
+  - apiVersion: v1
+    appVersion: 2.1.0.BUILD-SNAPSHOT
     created: "2020-04-30T07:28:41.775796639Z"
     description: Helm chart for deploying basic Spring applications with Keel
     digest: 1ffc06b35b3cdacdaf31c183e2754ce8fc2fc0fa2bb005694c87c024249e56f8
