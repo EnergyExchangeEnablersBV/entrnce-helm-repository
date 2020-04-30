@@ -8,8 +8,8 @@ metadata:
     chart: {{ include "spring.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
-    keel.sh/policy: {{ .Values.keel.trigger  }}
-    keel.sh/trigger: {{ .Values.keel.policy  }}
+    keel.sh/policy: {{ .Values.keel.policy  }}
+    keel.sh/trigger: {{ .Values.keel.trigger  }}
     keel.sh/approvals: {{ .Values.keel.approvals | quote }}
   annotations:
       keel.sh/pollSchedule: {{ .Values.keel.pollSchedule | quote }}

@@ -9,7 +9,7 @@ home: https://spring.io
 icon: https://spring.io/img/homepage/icon-spring-boot.svg
 sources:
   - https://github.com/EnergyExchangeEnablersBV/keel-dockerhub-test
-version: 0.0.5
+version: 0.0.6
 maintainers:
   - name: Nick Hartjes
     email: nick.hartjes@entrnce.com
