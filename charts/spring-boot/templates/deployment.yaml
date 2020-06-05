@@ -107,3 +107,5 @@ spec:
           secret:
             secretName: {{ .Values.spring.config.secretName }}
       {{- end }}
+      imagePullSecrets:
+        - name: {{ .Values.imageCredentials.name }}

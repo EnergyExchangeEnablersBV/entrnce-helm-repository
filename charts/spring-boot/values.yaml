@@ -5,9 +5,11 @@
 replicaCount: 1
 
 image:
-  repository: energyexchangeenablers/keel-dockerhub-test
+  repository: docker.nexus.test.e-x-e.cloud/keel-dockerhub-test
   tag: latest
   pullPolicy: Always
+imageCredentials:
+  name: private-docker-registry
 
 nameOverride: ""
 fullnameOverride: ""
