@@ -35,5 +35,22 @@ spec:
             - name: {{ include "angular.fullname" . }}-default.conf
               mountPath: /etc/nginx/conf.d/default.conf
               subPath: default.conf
+          ports:
+            - name: http
+              containerPort: {{ .Values.containerPort }}
+              protocol: TCP
+          {{- if .Values.livenessProbe }}
+          livenessProbe:
+          {{ toYaml .Values.livenessProbe | indent 12 }}
+          {{- end }}
+          {{- if .Values.readinessProbe }}
+          readinessProbe:
+          {{ toYaml .Values.readinessProbe | indent 12 }}
+      {{- end }}
       restartPolicy: Always
+      serviceAccountName: {{ template "angular.serviceAccountName" . }}
+      securityContext:
+      {{ toYaml .Values.securityContext | indent 8 }}
+      imagePullSecrets:
+      - name: {{ .Values.imageCredentials.name }}
 
