@@ -8,8 +8,6 @@ keywords:
 - spring-boot
 home: https://spring.io
 icon: https://spring.io/img/homepage/icon-spring-boot.svg
-sources:
-  - https://github.com/EnergyExchangeEnablersBV/spring-boot
 version: 0.0.2
 maintainers:
   - name: Nick Hartjes
