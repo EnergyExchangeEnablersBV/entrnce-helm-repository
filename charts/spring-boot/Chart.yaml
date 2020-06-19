@@ -1,5 +1,5 @@
 apiVersion: v1
-appVersion: 0.0.2.BUILD-SNAPSHOT
+appVersion: 0.0.3.BUILD-SNAPSHOT
 description: Helm chart for deploying basic Spring Boot applications
 name: spring-boot
 keywords:
@@ -8,9 +8,7 @@ keywords:
 - spring-boot
 home: https://spring.io
 icon: https://spring.io/img/homepage/icon-spring-boot.svg
-sources:
-  - https://github.com/EnergyExchangeEnablersBV/spring-boot
-version: 0.0.2
+version: 0.0.3
 maintainers:
   - name: Nick Hartjes
     email: nick.hartjes@entrnce.com
