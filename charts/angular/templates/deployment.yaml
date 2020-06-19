@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "angular.fullname" . }}
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    app: {{ include "angular.name" . }}
+    chart: {{ include "angular.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    keel.sh/policy: {{ .Values.keel.policy  }}
+    keel.sh/trigger: {{ .Values.keel.trigger  }}
+    keel.sh/approvals: {{ .Values.keel.approvals | quote }}
+  annotations:
+    keel.sh/pollSchedule: {{ .Values.keel.pollSchedule | quote }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "angular.name" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "angular.name" . }}
+        release: {{ .Release.Name }}
+      annotations:
+    {{ toYaml .Values.podAnnotations | indent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+            - name: {{ include "angular.fullname" . }}-default.conf
+              mountPath: /etc/nginx/conf.d/default.conf
+              subPath: default.conf
+      restartPolicy: Always
+
