@@ -9,5 +9,6 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 data:
-  default.conf: |-
-    {{ .Files.Get "default.conf"}}
+  {{ if .Files.Get "config/default.conf" }}
+  default.conf: {{ .Files.Get "config/default.conf"| b64enc }}
+  {{ end }}

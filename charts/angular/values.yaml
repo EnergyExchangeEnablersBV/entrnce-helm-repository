@@ -7,6 +7,12 @@ image:
 imageCredentials:
   name: private-docker-registry
 
+## The list of ports that your app listens on
+containerPort: 80
+
+nameOverride: ""
+fullnameOverride: ""
+
 keel:
   # keel policy (all/major/minor/patch/force)
   policy: force
