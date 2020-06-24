@@ -52,4 +52,8 @@ spec:
       {{ toYaml .Values.securityContext | indent 8 }}
       imagePullSecrets:
       - name: {{ .Values.imageCredentials.name }}
+      volumes:
+        - name: {{ include "angular.fullname" . }}-config
+          configMap:
+            name: {{ include "angular.fullname" . }}-config
 
