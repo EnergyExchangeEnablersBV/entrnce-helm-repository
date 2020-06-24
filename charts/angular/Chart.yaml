@@ -1,5 +1,4 @@
 apiVersion: v1
-appVersion: 0.0.5
 description: Helm chart for deploying basic Angular applications
 name: angular
 keywords:
@@ -8,7 +7,7 @@ keywords:
   - nginx
 home: https://angular.io/
 icon: https://angular.io/assets/images/favicons/favicon.ico
-version: 0.0.5
+version: 0.0.6
 maintainers:
   - name: Nick Hartjes
     email: nick.hartjes@entrnce.com

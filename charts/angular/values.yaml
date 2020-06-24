@@ -95,3 +95,12 @@ readinessProbe: {}
 #    port: http
 #  initialDelaySeconds: 60
 #  periodSeconds: 10
+
+
+nginx: {}
+#  defaultconf:
+
+entrnce: {}
+#  config01:
+#  config02:
+
