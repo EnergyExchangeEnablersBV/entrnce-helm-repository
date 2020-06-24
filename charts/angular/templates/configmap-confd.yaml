@@ -15,9 +15,9 @@ data:
     {{ end }}
   {{- if hasKey .Values.entrnce "config01" }}
   config01.json: |
-    {{ .Values.entrnce.config01 | toJson | quote }}
+    {{ .Values.entrnce.config01 | toJson }}
     {{ end }}
   {{- if hasKey .Values.entrnce "config02" }}
   config02.json: |
-    {{ .Values.entrnce.config02 | toJson | quote }}
+    {{ .Values.entrnce.config02 | toJson }}
     {{ end }}

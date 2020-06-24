@@ -104,3 +104,33 @@ entrnce: {}
 #  config01:
 #  config02:
 
+# Example:
+#entrnce:
+#  config01:
+#    {
+#      "redirectUrlAfterLogin": "insight",
+#      "locale": "de-DE",
+#      "frontEndPathPrefix": "customer",
+#      "timezone": "Europe/Amsterdam",
+#      "endPoints": {
+#        "user": "/api/customer-matcher",
+#        "backend": "/api/customer-matcher",
+#        "auth": "/oidc",
+#        "public": "/api/customer-matcher/public"
+#      },
+#      "sentryDsn": "https://1c33bae7c12944b2b703347a9f539522:8329f0ab24b2411ca4ab8ee435f374f3@sentry.e-x-e.cloud/23"
+#    }
+#  config02:
+#    {
+#      "redirectUrlAfterLogin": "",
+#      "locale": "de-DE",
+#      "frontEndPathPrefix": "stadtwerke",
+#      "timezone": "Europe/Amsterdam",
+#      "endPoints": {
+#        "user": "/api/stadtwerke-matcher",
+#        "backend": "/api/stadtwerke-matcher",
+#        "auth": "/oidc",
+#        "public": "/api/stadtwerke-matcher/public"
+#      },
+#      "sentryDsn": "https://1c33bae7c12944b2b703347a9f539522:8329f0ab24b2411ca4ab8ee435f374f3@sentry.e-x-e.cloud/23"
+#    }
