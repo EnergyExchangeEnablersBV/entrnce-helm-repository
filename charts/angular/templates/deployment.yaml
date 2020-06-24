@@ -31,6 +31,9 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+            - name: {{ include "angular.fullname" . }}-conf.d
+              mountPath: /etc/nginx/conf.d/
           ports:
             - name: http
               containerPort: {{ .Values.containerPort }}
