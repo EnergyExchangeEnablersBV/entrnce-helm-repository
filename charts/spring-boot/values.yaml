@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: docker.nexus.test.e-x-e.cloud/keel-dockerhub-test
+  repository: nickhartjes/dummy-container
   tag: latest
   pullPolicy: Always
 imageCredentials:
@@ -56,9 +56,13 @@ extraEnv: {}
   # DATABASE_USERNAME: spring
   # DATABASE_PASSWORD: spring
 
+secretKeyRefEnv: {}
+#  secretname:
+#    - MYSQL_PASSWORD: mysql-password
+
 securityContext: {}
-  # runAsUser: 1000
-  # fsGroup: 1000
+#   runAsUser: 1000
+#   fsGroup: 1000
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

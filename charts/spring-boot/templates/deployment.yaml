@@ -24,17 +24,32 @@ spec:
       labels:
         app: {{ include "spring.name" . }}
         release: {{ .Release.Name }}
+      {{- if .Values.podAnnotations }}
       annotations:
         {{ toYaml .Values.podAnnotations | indent 8 }}
+      {{ end }}
     spec:
       serviceAccountName: {{ template "spring.serviceAccountName" . }}
+      {{- if  .Values.securityContext }}
       securityContext:
         {{ toYaml .Values.securityContext | indent 8 }}
+      {{ end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+            {{- range $secretKeyRefEnvKey, $secretKeyRefEnvValue := .Values.secretKeyRefEnv }}
+            {{- range $secretName, $secretValue := $secretKeyRefEnvValue }}
+            {{- range $key, $value := $secretValue }}
+            - name: {{ $secretKeyRefEnvKey}}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $key }}
+                  key: {{ $value }}
+            {{- end }}
+            {{- end }}
+            {{- end }}
             {{- if hasKey .Values.spring "profile" }}
             - name: SPRING_PROFILES_ACTIVE
               value: {{ .Values.spring.profile }}
