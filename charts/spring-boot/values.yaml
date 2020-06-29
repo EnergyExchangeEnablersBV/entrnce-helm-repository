@@ -56,9 +56,9 @@ extraEnv: {}
   # DATABASE_USERNAME: spring
   # DATABASE_PASSWORD: spring
 
-secretKeyRefEnv:
-  secretname:
-    - mysql-password: MYSQL_PASSWORD
+secretKeyRefEnv: {}
+#  secretname:
+#    - mysql-password: MYSQL_PASSWORD
 
 securityContext: {}
 #   runAsUser: 1000
