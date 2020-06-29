@@ -45,8 +45,8 @@ spec:
             - name: {{ $secretKeyRefEnvKey}}
               valueFrom:
                 secretKeyRef:
-                  name: {{ $key }}
-                  key: {{ $value }}
+                  name: {{ $value }}
+                  key: {{ $key }}
             {{- end }}
             {{- end }}
             {{- end }}
