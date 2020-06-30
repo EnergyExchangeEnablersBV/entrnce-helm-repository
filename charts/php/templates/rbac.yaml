@@ -2,11 +2,11 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: {{ template "angular.fullname" . }}
+  name: {{ template "php.fullname" . }}
   namespace: {{ .Release.Namespace | quote }}
   labels:
-    app: {{ template "angular.name" . }}
-    chart: {{ template "angular.chart" . }}
+    app: {{ template "php.name" . }}
+    chart: {{ template "php.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 rules:
@@ -17,18 +17,18 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: {{ template "angular.fullname" . }}
+  name: {{ template "php.fullname" . }}
   labels:
-    app: {{ template "angular.name" . }}
-    chart: {{ template "angular.chart" . }}
+    app: {{ template "php.name" . }}
+    chart: {{ template "php.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: {{ template "angular.fullname" . }}
+  name: {{ template "php.fullname" . }}
 subjects:
-  - name: {{ template "angular.serviceAccountName" . }}
+  - name: {{ template "php.serviceAccountName" . }}
     namespace: {{ .Release.Namespace | quote }}
     kind: ServiceAccount
   {{- end -}}

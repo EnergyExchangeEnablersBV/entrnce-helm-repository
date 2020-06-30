@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "angular.fullname" . }}
+  name: {{ include "php.fullname" . }}
   namespace: {{ .Release.Namespace | quote }}
   labels:
-    app: {{ include "angular.name" . }}
-    chart: {{ include "angular.chart" . }}
+    app: {{ include "php.name" . }}
+    chart: {{ include "php.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
     keel.sh/policy: {{ .Values.keel.policy  }}
@@ -17,12 +17,12 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "angular.name" . }}
+      app: {{ include "php.name" . }}
       release: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ include "angular.name" . }}
+        app: {{ include "php.name" . }}
         release: {{ .Release.Name }}
       annotations:
     {{ toYaml .Values.podAnnotations | indent 8 }}
@@ -32,7 +32,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
-            - name: {{ include "angular.fullname" . }}-config
+            - name: {{ include "php.fullname" . }}-config
               mountPath: /etc/nginx/conf.d/
           ports:
             - name: http
@@ -47,13 +47,13 @@ spec:
           {{ toYaml .Values.readinessProbe | indent 12 }}
       {{- end }}
       restartPolicy: Always
-      serviceAccountName: {{ template "angular.serviceAccountName" . }}
+      serviceAccountName: {{ template "php.serviceAccountName" . }}
       securityContext:
       {{ toYaml .Values.securityContext | indent 8 }}
       imagePullSecrets:
       - name: {{ .Values.imageCredentials.name }}
       volumes:
-        - name: {{ include "angular.fullname" . }}-config
+        - name: {{ include "php.fullname" . }}-config
           configMap:
-            name: {{ include "angular.fullname" . }}-config
+            name: {{ include "php.fullname" . }}-config
 
