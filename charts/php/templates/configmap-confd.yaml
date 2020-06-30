@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "angular.fullname" . }}-config
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    app: {{ include "angular.name" . }}
+    chart: {{ include "angular.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+  {{- if hasKey .Values.nginx "defaultconf" }}
+  default.conf: |
+    {{ .Values.nginx.defaultconf | b64enc }}
+    {{ end }}
+  {{- if hasKey .Values.entrnce "config01" }}
+  config01.json: |
+    {{ .Values.entrnce.config01 | toJson }}
+    {{ end }}
+  {{- if hasKey .Values.entrnce "config02" }}
+  config02.json: |
+    {{ .Values.entrnce.config02 | toJson }}
+    {{ end }}
