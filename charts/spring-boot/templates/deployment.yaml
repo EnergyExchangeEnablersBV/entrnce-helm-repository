@@ -60,11 +60,11 @@ spec:
               {{- end }}
             {{- if and (eq .Values.spring.config.type "file") (hasKey .Values.spring.config "content") }}
             - name: SPRING_CONFIG_LOCATION
-              value: "file:/app/config/application-default.yml"
+              value: "file:/config/application.yml"
             {{- end }}
             {{- if hasKey .Values.spring.config "secretName" }}
             - name: SPRING_CONFIG_ADDITIONAL_LOCATION
-              value: "file:/app/config/secret.yml"
+              value: "file:/config/secret.yml"
             {{- end }}
             {{- range $key, $value := .Values.extraEnv }}
             - name: {{ $key }}
