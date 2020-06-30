@@ -42,10 +42,10 @@ spec:
             {{- range $secretKeyRefEnvKey, $secretKeyRefEnvValue := .Values.secretKeyRefEnv }}
             {{- range $secretName, $secretValue := $secretKeyRefEnvValue }}
             {{- range $key, $value := $secretValue }}
-            - name: {{ $secretKeyRefEnvKey}}
+            - name: {{ $value }}
               valueFrom:
                 secretKeyRef:
-                  name: {{ $value }}
+                  name: {{ $secretKeyRefEnvKey}}
                   key: {{ $key }}
             {{- end }}
             {{- end }}
