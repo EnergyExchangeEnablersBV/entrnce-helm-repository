@@ -74,9 +74,8 @@ spec:
             - name: data
               mountPath: /data
             {{- if and (eq .Values.spring.config.type "file") (hasKey .Values.spring.config "content") }}
-            - name: config-file
-              mountPath: /app/config/application.yml
-              subPath: application.yml
+            - name: config-volume
+              mountPath: /app/config/
             {{- end }}
             {{- if hasKey .Values.spring.config "secretName" }}
             - name: secret-file
@@ -113,7 +112,7 @@ spec:
         - name: data
           emptyDir: {}
       {{- if and (eq .Values.spring.config.type "file") (hasKey .Values.spring.config "content") }}
-        - name: config-file
+        - name: config-volume
           configMap:
             name: {{ include "spring.fullname" . }}-config
       {{- end }}
