@@ -161,6 +161,24 @@ entries:
     version: 0.0.1
   php:
   - apiVersion: v1
+    created: "2020-06-30T12:02:47.241464865Z"
+    description: Helm chart for deploying basic PHP applications
+    digest: 7ef835abd00694506fd21c4220fee397359d0ac8a631d8eac6966cb652b0277a
+    home: https://www.php.net/
+    icon: https://www.php.net/images/logos/php-logo.svg
+    keywords:
+    - php
+    - apache
+    maintainers:
+    - email: nick.hartjes@entrnce.com
+      name: Nick Hartjes
+    - email: wilco.ten.wolde@entrnce.com
+      name: Wilco ten Wolde
+    name: php
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/php-0.0.10/php-0.0.10.tgz
+    version: 0.0.10
+  - apiVersion: v1
     created: "2020-06-30T11:15:24.228021076Z"
     description: Helm chart for deploying basic PHP applications
     digest: 9ec54c7e906e15173785294e298998957557a3e28f42fed42b17270d99f6a6a0
@@ -179,6 +197,23 @@ entries:
     - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/php-0.0.9/php-0.0.9.tgz
     version: 0.0.9
   spring-boot:
+  - apiVersion: v1
+    created: "2020-06-30T12:02:47.347873572Z"
+    description: Helm chart for deploying basic Spring Boot applications
+    digest: 544b2c3de7b23facce73651ae2a450778de41791809e76ab5689fe9a729c3cb0
+    home: https://spring.io
+    icon: https://spring.io/img/homepage/icon-spring-boot.svg
+    keywords:
+    - spring
+    - spring-cloud
+    - spring-boot
+    maintainers:
+    - email: nick.hartjes@entrnce.com
+      name: Nick Hartjes
+    name: spring-boot
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/spring-boot-0.0.12/spring-boot-0.0.12.tgz
+    version: 0.0.12
   - apiVersion: v1
     created: "2020-06-30T11:31:58.055174888Z"
     description: Helm chart for deploying basic Spring Boot applications
