@@ -75,12 +75,12 @@ spec:
               mountPath: /data
             {{- if and (eq .Values.spring.config.type "file") (hasKey .Values.spring.config "content") }}
             - name: config-file
-              mountPath: /config/application.yml
+              mountPath: /app/config/application.yml
               subPath: application.yml
             {{- end }}
             {{- if hasKey .Values.spring.config "secretName" }}
             - name: secret-file
-              mountPath: /config/secret.yml
+              mountPath: /app/config/secret.yml
               subPath: secret.yml
             {{- end }}
           ports:
