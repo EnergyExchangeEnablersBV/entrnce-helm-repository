@@ -58,10 +58,6 @@ spec:
             - name: KUBERNETES_TRUST_CERTIFICATES
               value: "true"
               {{- end }}
-            {{- if and (eq .Values.spring.config.type "file") (hasKey .Values.spring.config "content") }}
-            - name: SPRING_CONFIG_LOCATION
-              value: "file:/app/config/application-default.yml"
-            {{- end }}
             {{- if hasKey .Values.spring.config "secretName" }}
             - name: SPRING_CONFIG_ADDITIONAL_LOCATION
               value: "file:/app/config/secret.yml"
