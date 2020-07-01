@@ -34,8 +34,8 @@ Create chart name and version as used by the chart label.
 Common labels
 */}}
 {{- define "php.labels" -}}
-app.kubernetes.io/name: {{ include "nginx.name" . }}
-helm.sh/chart: {{ include "nginx.chart" . }}
+app.kubernetes.io/name: {{ include "php.name" . }}
+helm.sh/chart: {{ include "php.chart" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end -}}
@@ -49,7 +49,7 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 
 {{/*
-Return the proper NGINX image name
+Return the proper PHP image name
 */}}
 {{- define "php.image" -}}
 {{- $registryName := .Values.image.registry -}}
