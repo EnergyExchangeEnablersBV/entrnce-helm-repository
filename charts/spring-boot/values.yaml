@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: nickhartjes/dummy-container
+  repository: docker-private/entrnce-website
   tag: latest
   pullPolicy: Always
 imageCredentials:
