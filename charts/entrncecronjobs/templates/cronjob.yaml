@@ -1,0 +1,44 @@
+{{/*{{- range (required "Provide a values-file. E.g. `helm ... -f values.yaml -f values/triggers.yaml`" .Values.triggers) }}*/}}
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ include "cronjobs.name" . }}-tr-{{ .trigger | lower }}
+{{/*  name: {{ .Chart.Name }}*/}}
+  namespace: {{ .Release.Namespace | quote }}
+  labels:
+    app: {{ .Chart.Name }}
+    chart: {{ include "cronjobs.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    scheduleOffset: {{ .Values.scheduleOffset }}
+spec:
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  schedule: {{ .schedule }}
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: {{ include "cronjobs.fullname" . }}-tr-{{ .trigger | lower }}
+              image: energyexchangeenablers/docker-curl
+              command: ["/bin/bash","-c", "
+            {{- .Values.curlStatement }} '{{ .Values.baseUrl }}{{ .type }}/
+            {{- .trigger }}
+            {{- if .from }}?timeFrom={{ .from }}{{ end }}
+            {{- if .to }}&timeTo={{ .to }}{{ end }}'"]
+              env:
+              {{- range $secretKeyRefEnvKey, $secretKeyRefEnvValue := .Values.secretKeyRefEnv }}
+              {{- range $secretName, $secretValue := $secretKeyRefEnvValue }}
+              {{- range $key, $value := $secretValue }}
+              - name: {{ $value }}
+                valueFrom:
+                  secretKeyRef:
+                    name: {{ $secretKeyRefEnvKey}}
+                    key: {{ $key }}
+              {{- end }}
+              {{- end }}
+          {{- end }}
+          restartPolicy: Never
+{{/*  {{- end}}*/}}
