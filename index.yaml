@@ -159,6 +159,23 @@ entries:
     urls:
     - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/angular-0.0.1/angular-0.0.1.tgz
     version: 0.0.1
+  aws-ecr-credential:
+  - apiVersion: v1
+    appVersion: 0.0.1
+    created: "2020-07-02T09:15:11.848923699Z"
+    description: This Chart seemlessly integrates Kubernetes with AWS ECR
+    digest: 1188db49ef91cce0d236e993fa88e16a222de06da01edd0f2750303488c5ad84
+    keywords:
+    - aws ecr
+    - imagePullSecrets
+    - kubernetes
+    maintainers:
+    - email: support@entrnce.com
+      name: Nick & Nick
+    name: aws-ecr-credential
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/aws-ecr-credential-0.0.1/aws-ecr-credential-0.0.1.tgz
+    version: 0.0.1
   php:
   - apiVersion: v1
     created: "2020-06-30T12:02:47.241464865Z"
