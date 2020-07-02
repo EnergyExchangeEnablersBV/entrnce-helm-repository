@@ -162,6 +162,22 @@ entries:
   aws-ecr-credential:
   - apiVersion: v1
     appVersion: 0.0.1
+    created: "2020-07-02T10:01:10.437967764Z"
+    description: This Chart seemlessly integrates Kubernetes with AWS ECR
+    digest: 7a8b02e368e9c7092ae9f5277eb80a772e86bd5321b2ca9319d8654c2c018317
+    keywords:
+    - aws ecr
+    - imagePullSecrets
+    - kubernetes
+    maintainers:
+    - email: support@entrnce.com
+      name: Nick & Nick
+    name: aws-ecr-credential
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/aws-ecr-credential-0.0.2/aws-ecr-credential-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v1
+    appVersion: 0.0.1
     created: "2020-07-02T09:15:11.848923699Z"
     description: This Chart seemlessly integrates Kubernetes with AWS ECR
     digest: 1188db49ef91cce0d236e993fa88e16a222de06da01edd0f2750303488c5ad84
