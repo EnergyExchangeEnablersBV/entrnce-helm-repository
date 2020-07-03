@@ -6,8 +6,8 @@ targetNamespace: default
 # aws.accessKeyId is the credential of a read-only user for the ECR
 # aws.secretAccessKey is the credential of a read-only user for the ECR
 
-awsAccount: ""
-awsRegion: ""
+awsAccount: "test"
+awsRegion: "test"
 
 jobImage: architectminds/aws-kubectl
 jobImageTag: 1.1

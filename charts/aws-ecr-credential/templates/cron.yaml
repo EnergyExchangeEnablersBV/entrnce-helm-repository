@@ -39,10 +39,10 @@ spec:
               - "/bin/sh"
               - "-c"
               - |
-                AWS_ACCOUNT={{ .Values.awsAccount }}
-                AWS_REGION={{ .Values.awsRegion }}
                 echo "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID"
                 echo "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY"
+                AWS_ACCOUNT={{ .Values.awsAccount }}
+                AWS_REGION={{ .Values.awsRegion }}
                 echo "AWS_ACCOUNT=$AWS_ACCOUNT"
                 echo "AWS_REGION=$AWS_REGION"
                 DOCKER_REGISTRY_SERVER=https://${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com
