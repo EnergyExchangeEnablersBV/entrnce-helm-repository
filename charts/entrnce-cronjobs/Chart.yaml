@@ -1,6 +1,6 @@
 apiVersion: v1
 description: Helm chart for deploying cronjobs for Entrnce
-name: entrncecronjobs
+name: entrnce-cronjobs
 keywords:
   - cronjobs
 home: https://entrnce.com/

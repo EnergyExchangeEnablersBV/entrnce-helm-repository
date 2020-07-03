@@ -1,0 +1,55 @@
+# We need to declare variabels to use in the range loop
+  # Default .Values references won't work
+  {{- $name := include "cronjobs.name" .  -}}
+  {{- $fullName := include "cronjobs.fullname" . -}}
+  {{- $chartName := include "cronjobs.chart" . -}}
+  {{- $releaseName := .Release.Name  -}}
+  {{- $releaseService := .Release.Service -}}
+  {{- $releaseNamespace := .Release.Namespace -}}
+  {{- $curlStatement := .Values.curlStatement -}}
+  {{- $baseUrl := .Values.baseUrl -}}
+  {{- $scheduleOffset := .Values.scheduleOffset -}}
+
+  {{- range (required "Provide a values-file. E.g. `helm ... -f values.yaml -f values/triggers.yaml`" .Values.triggers) }}
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ $name }}-tr-{{ .trigger | lower }}
+  namespace: {{ $releaseNamespace | quote }}
+  labels:
+    app: {{ $name }}
+    chart: {{ $chartName }}
+    release: {{ $releaseName }}
+    heritage: {{ $releaseService }}
+    scheduleOffset: {{ $scheduleOffset }}
+spec:
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  schedule: {{ .schedule }}
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: {{ $chartName }}- {{ .trigger | lower }}
+              image: energyexchangeenablers/docker-curl
+              command: ["/bin/bash","-c", "
+            {{- $curlStatement }} '{{ $baseUrl }}{{ .type }}/
+            {{- .trigger }}
+            {{- if .from }}?timeFrom={{ .from }}{{ end }}
+            {{- if .to }}&timeTo={{ .to }}{{ end }}'"]
+              env:
+                - name: BASIC_AUTH_ADMIN_USERNAME
+                  valueFrom:
+                    secretKeyRef:
+                      name: "{namespace}-{appName}"
+                      key: basic-auth-admin-username
+                - name: BASIC_AUTH_ADMIN_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: "{namespace}-{appName}"
+                      key: basic-auth-admin-password
+          restartPolicy: Never
+  {{- end}}
+

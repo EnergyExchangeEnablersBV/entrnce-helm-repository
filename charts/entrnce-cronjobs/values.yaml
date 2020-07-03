@@ -1,22 +1,17 @@
 #generic
+namespace: ""
+appName: ""
 nameOverride: "test"
 fullnameOverride: "tes"
 
 curlStatement: "curl -v -X POST --user $BASIC_AUTH_ADMIN_USERNAME:$BASIC_AUTH_ADMIN_PASSWORD --header 'Content-Type: application/json' --header 'Accept: application/json'"
 baseUrl: "http://entrnce-deal-platform.{namespace}:8080/api/applicationEvents/"
-namespace: ""
-appName: ""
+
 scheduleOffset: "utcsummertime"
+
 # Voorbeeld: Als je wilt dat een job om 13:30 lokale tijd gedraaid moet worden vul
 # je in de trigger schedule het volgende in: 0 30 11 * * *
 # dus altijd lokale tijd min 2 uur.
-
-# example config
-#    - trigger: "GetPriceCurve"
-#      type: "trigger"
-#      schedule: "0 2 * * *"
-#      from: "todayNL"
-#      to: "tomorrowNL"
 
 #specific per template
 triggers:
