@@ -5,7 +5,7 @@ nameOverride: "test"
 fullnameOverride: "tes"
 
 curlStatement: "curl -v -X POST --user $BASIC_AUTH_ADMIN_USERNAME:$BASIC_AUTH_ADMIN_PASSWORD --header 'Content-Type: application/json' --header 'Accept: application/json'"
-baseUrl: "http://entrnce-deal-platform.{namespace}:8080/api/applicationEvents/"
+baseUrl: "http://entrnce-deal-platform.exe-int:8080/api/applicationEvents/"
 
 scheduleOffset: "utcsummertime"
 
@@ -14,24 +14,16 @@ scheduleOffset: "utcsummertime"
 # dus altijd lokale tijd min 2 uur.
 
 #specific per template
-triggers:
-  # notification triggers
-  - trigger: 'CheckBidFileSent'
-    type: "notificationTrigger"
-    schedule: "45 8 * * *"
-  - trigger: "CheckBidConfirmationReceived"
-    type: "notificationTrigger"
-    schedule: "36 11 * * *"
-  - trigger: "CheckPricesAvailable"
-    type: "notificationTrigger"
-    schedule: "10 11 * * *"
-  - trigger: "CheckEnecoEpexSpotPricesAvailable"
-    type: "notificationTrigger"
-    schedule: "5 14 * * *"
-  - trigger: "CheckPreEProgramSent"
-    type: "notificationTrigger"
-    schedule: "40 8 * * *"
+triggers: {}
+# notification triggers
+#  - trigger: 'CheckBidFileSent'
+#    type: "notificationTrigger"
+#    schedule: "45 8 * * *"
+#  - trigger: "CheckBidConfirmationReceived"
+#    type: "notificationTrigger"
+#    schedule: "36 11 * * *"
 
 secretKeyRefEnv: {}
 #  secretname:
-#    - mysql-password: MYSQL_PASSWORD
+#    - basic-auth-admin-username: BASIC_AUTH_ADMIN_USERNAME
+#    - basic-auth-admin-password: BASIC_AUTH_ADMIN_PASSWORD

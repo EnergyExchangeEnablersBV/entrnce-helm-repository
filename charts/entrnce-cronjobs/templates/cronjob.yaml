@@ -9,6 +9,7 @@
   {{- $curlStatement := .Values.curlStatement -}}
   {{- $baseUrl := .Values.baseUrl -}}
   {{- $scheduleOffset := .Values.scheduleOffset -}}
+  {{- $secretKeyRefEnv := .Values.secretKeyRefEnv  -}}
 
   {{- range (required "Provide a values-file. E.g. `helm ... -f values.yaml -f values/triggers.yaml`" .Values.triggers) }}
 ---
@@ -39,17 +40,20 @@ spec:
             {{- .trigger }}
             {{- if .from }}?timeFrom={{ .from }}{{ end }}
             {{- if .to }}&timeTo={{ .to }}{{ end }}'"]
+              {{- if $secretKeyRefEnv}}
               env:
-                - name: BASIC_AUTH_ADMIN_USERNAME
+                {{- range $secretKeyRefEnvKey, $secretKeyRefEnvValue := $secretKeyRefEnv }}
+                {{- range $secretName, $secretValue := $secretKeyRefEnvValue }}
+                {{- range $key, $value := $secretValue }}
+                - name: {{ $value }}
                   valueFrom:
                     secretKeyRef:
-                      name: "{namespace}-{appName}"
-                      key: basic-auth-admin-username
-                - name: BASIC_AUTH_ADMIN_PASSWORD
-                  valueFrom:
-                    secretKeyRef:
-                      name: "{namespace}-{appName}"
-                      key: basic-auth-admin-password
+                      name: {{ $secretKeyRefEnvKey}}
+                      key: {{ $key }}
+                {{- end }}
+                {{- end }}
+            {{- end }}
+          {{- end }}
           restartPolicy: Never
   {{- end}}
 
