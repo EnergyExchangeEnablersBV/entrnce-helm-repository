@@ -1,11 +1,11 @@
 #generic
-namespace: ""
-appName: ""
-nameOverride: "test"
-fullnameOverride: "tes"
+namespace: "exe-deploy"
+appName: "entrnce"
+nameOverride: ""
+fullnameOverride: ""
 
-curlStatement: "curl -v -X POST --user $BASIC_AUTH_ADMIN_USERNAME:$BASIC_AUTH_ADMIN_PASSWORD --header 'Content-Type: application/json' --header 'Accept: application/json'"
-baseUrl: "http://entrnce-deal-platform.exe-int:8080/api/applicationEvents/"
+curlStatement: "curl -v -X GET --header 'Content-Type: application/json' --header 'Accept: application/json'"
+baseUrl: "https://google.com/"
 
 scheduleOffset: "utcsummertime"
 
@@ -13,12 +13,10 @@ scheduleOffset: "utcsummertime"
 # je in de trigger schedule het volgende in: 0 30 11 * * *
 # dus altijd lokale tijd min 2 uur.
 
-#specific per template
-triggers: {}
-# notification triggers
-#  - trigger: 'CheckBidFileSent'
-#    type: "notificationTrigger"
-#    schedule: "45 8 * * *"
+triggers:
+  - trigger: '?test'
+    type: "search"
+    schedule: "45 * * * *"
 #  - trigger: "CheckBidConfirmationReceived"
 #    type: "notificationTrigger"
 #    schedule: "36 11 * * *"
