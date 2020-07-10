@@ -1,0 +1,134 @@
+---
+# Source: php/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: RELEASE-NAME-php
+  namespace: "default"
+  labels:
+    app: php
+    chart: php-0.0.11
+    release: RELEASE-NAME
+    heritage: Helm
+---
+# Source: php/templates/configmap-confd.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: RELEASE-NAME-php-config
+  namespace: "default"
+  labels:
+    app: php
+    chart: php-0.0.11
+    release: RELEASE-NAME
+    heritage: Helm
+data:
+---
+# Source: php/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: RELEASE-NAME-php
+  namespace: "default"
+  labels:
+    app: php
+    chart: php-0.0.11
+    release: RELEASE-NAME
+    heritage: Helm
+rules:
+  - apiGroups: [""]
+    resources: ["services", "pods", "endpoints", "configmaps"]
+    verbs: ["get","list"]
+---
+# Source: php/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: RELEASE-NAME-php
+  labels:
+    app: php
+    chart: php-0.0.11
+    release: RELEASE-NAME
+    heritage: Helm
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: RELEASE-NAME-php
+subjects:
+  - name: RELEASE-NAME-php
+    namespace: "default"
+    kind: ServiceAccount
+---
+# Source: php/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: RELEASE-NAME-php
+  namespace: "default"
+  annotations:
+  labels:
+    app: php
+    chart: "php-0.0.11"
+    release: "RELEASE-NAME"
+    heritage: "Helm"
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+  selector:
+    app: php
+    release: "RELEASE-NAME"
+---
+# Source: php/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: RELEASE-NAME-php
+  namespace: "default"
+  labels:
+    app: php
+    chart: php-0.0.11
+    release: RELEASE-NAME
+    heritage: Helm
+    keel.sh/policy: force
+    keel.sh/trigger: poll
+    keel.sh/approvals: "1"
+  annotations:
+    keel.sh/pollSchedule: "@every 1m"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: php
+      release: RELEASE-NAME
+  template:
+    metadata:
+      labels:
+        app: php
+        release: RELEASE-NAME
+      annotations:
+            {}
+    spec:
+      containers:
+        - name: php
+          image: "nickhartjes/dummy-container:latest"
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: RELEASE-NAME-php-config
+              mountPath: /etc/nginx/conf.d/
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+      restartPolicy: Always
+      serviceAccountName: RELEASE-NAME-php
+      securityContext:
+              null
+      imagePullSecrets:
+      - name: private-docker-registry
+      volumes:
+        - name: RELEASE-NAME-php-config
+          configMap:
+            name: RELEASE-NAME-php-config
