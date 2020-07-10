@@ -308,6 +308,24 @@ entries:
     version: 0.0.1
   php:
   - apiVersion: v1
+    created: "2020-07-10T08:22:32.886812319Z"
+    description: Helm chart for deploying basic PHP applications
+    digest: 3605d3a6eeb0371d4d51089589d3602f51d029714669ce26d93a34d2ab10fc06
+    home: https://www.php.net/
+    icon: https://www.php.net/images/logos/php-logo.svg
+    keywords:
+    - php
+    - apache
+    maintainers:
+    - email: nick.hartjes@entrnce.com
+      name: Nick Hartjes
+    - email: wilco.ten.wolde@entrnce.com
+      name: Wilco ten Wolde
+    name: php
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/php-0.0.13/php-0.0.13.tgz
+    version: 0.0.13
+  - apiVersion: v1
     created: "2020-06-30T12:02:47.241464865Z"
     description: Helm chart for deploying basic PHP applications
     digest: 7ef835abd00694506fd21c4220fee397359d0ac8a631d8eac6966cb652b0277a
