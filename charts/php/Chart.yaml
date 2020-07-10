@@ -6,7 +6,7 @@ keywords:
   - apache
 home: https://www.php.net/
 icon: https://www.php.net/images/logos/php-logo.svg
-version: 0.0.12
+version: 0.0.13
 maintainers:
   - name: Nick Hartjes
     email: nick.hartjes@entrnce.com
