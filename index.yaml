@@ -289,6 +289,25 @@ entries:
     urls:
     - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/entrnce-cronjobs-0.0.2/entrnce-cronjobs-0.0.2.tgz
     version: 0.0.2
+  entrnce-website:
+  - apiVersion: v1
+    created: "2020-07-10T08:36:04.860757864Z"
+    description: Helm chart for deploying basic PHP applications
+    digest: 514ef2aed756cfeadff469b69d67c506a2abf92983e4e7317d947a0d29400eee
+    home: https://www.php.net/
+    icon: https://www.php.net/images/logos/php-logo.svg
+    keywords:
+    - php
+    - apache
+    maintainers:
+    - email: nick.hartjes@entrnce.com
+      name: Nick Hartjes
+    - email: wilco.ten.wolde@entrnce.com
+      name: Wilco ten Wolde
+    name: entrnce-website
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/entrnce-website-0.0.1/entrnce-website-0.0.1.tgz
+    version: 0.0.1
   entrncecronjobs:
   - apiVersion: v1
     created: "2020-07-02T10:55:42.19297598Z"
