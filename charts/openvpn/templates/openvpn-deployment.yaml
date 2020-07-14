@@ -57,8 +57,7 @@ spec:
           {{- end }}
           name: openvpn
         securityContext:
-          capabilities:
-            privileged: true
+          privileged: true
         readinessProbe:
           initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
           periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
