@@ -355,6 +355,31 @@ entries:
     - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/openvpn-4.2.3/openvpn-4.2.3.tgz
     version: 4.2.3
   - apiVersion: v1
+    created: "2020-07-14T09:58:42.277283983Z"
+    description: A helm chart to deploy OpenVPN on Entrnce cluster without hacking
+      to get it work
+    digest: 72ea84df98c05bf7f1d1bc77488b4d3791d11d0f53b37a73a667a78a1b112c08
+    home: https://openvpn.net/index.php/open-source.html
+    icon: https://forums.openvpn.net/styles/openvpn/theme/images/ovpnlogo.png
+    keywords:
+    - openvpn
+    - vpn
+    - tunnel
+    - network
+    - service
+    - connectivity
+    - encryption
+    maintainers:
+    - name: Wilco ten Wolde
+    name: openvpn
+    sources:
+    - https://github.com/jfelten/openvpn-docker
+    - https://github.com/kubernetes/charts/tree/master/stable/openvpn
+    - https://github.com/jfelten/helm-charts
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/openvpn-0.0.2/openvpn-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v1
     created: "2020-07-14T09:30:20.727873081Z"
     description: A helm chart to deploy OpenVPN on Entrnce cluster without hacking
       to get it work
