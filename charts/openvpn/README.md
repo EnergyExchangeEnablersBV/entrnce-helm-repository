@@ -1,5 +1,42 @@
-# Helm chart for OpenVPN
+## Entrnce 
+Deze helm chart is default helm met enkele aanpassingen om routing direct te laten werken zonder handmatige aanpassingen op het EXE cluster. Of dit ook gaat gelden voor het Entrnce cluster is nog onduidelijk.  
+
+Aanpassingen
+
+In: openvpn-deployment.yaml
+
+Vervang: 
+
+    securityContext:
+      capabilities:
+        add:
+        - NET_ADMIN
+
+Door:
+       
+    securityContext:
+      privileged: true 
+          
+
+In: openvpn-deployment.yaml
+
+Vervangen:		  
+      command: ["/etc/openvpn/setup/configure.sh"]
+      
+
+Door>:		
+      command: ["/bin/sh","-c"]
+      args: ["echo pwd; sysctl -w net.ipv4.ip_forward=1; /etc/openvpn/setup/configure.sh"]
+
+
+
+Onderstaande is de standaard readme van de orginele helm chart
+
+
+
+## Helm chart for OpenVPN
 This chart will install an [OpenVPN](https://openvpn.net/) server inside a kubernetes cluster.  New certificates are generated on install, and a script is provided to generate client keys as needed.  The chart will automatically configure dns to use kube-dns and route all network traffic to kubernetes pods and services through the vpn.  By connecting to this vpn a host is effectively inside a cluster's network.
+
 
 ### Uses
 The primary purpose of this chart was to make it easy to access kubernetes services during development.  It could also be used for any service that only needs to be accessed through a vpn or as a standard vpn.

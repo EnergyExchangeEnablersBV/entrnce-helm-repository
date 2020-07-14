@@ -50,7 +50,7 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         command: ["/bin/sh","-c"]
-        
+
         args: ["echo pwd; sysctl -w net.ipv4.ip_forward=1; /etc/openvpn/setup/configure.sh"]
         ports:
         - containerPort: {{ .Values.service.internalPort }}
