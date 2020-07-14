@@ -325,6 +325,35 @@ entries:
     urls:
     - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/entrncecronjobs-0.0.1/entrncecronjobs-0.0.1.tgz
     version: 0.0.1
+  openvpn:
+  - apiVersion: v1
+    appVersion: 1.1.0
+    created: "2020-07-14T09:27:12.107015346Z"
+    description: A Helm chart to install an openvpn server inside a kubernetes cluster.  Certificate
+      generation is also part of the deployment, and this chart will generate client
+      keys as needed.
+    digest: e9997ee5b404ae0d87ec5085a3269f4dba57f12f06b6cadc541ccf66d99c44a0
+    home: https://openvpn.net/index.php/open-source.html
+    icon: https://forums.openvpn.net/styles/openvpn/theme/images/ovpnlogo.png
+    keywords:
+    - openvpn
+    - vpn
+    - tunnel
+    - network
+    - service
+    - connectivity
+    - encryption
+    maintainers:
+    - name: jasongwartz
+    - name: dippynark
+    name: openvpn
+    sources:
+    - https://github.com/jfelten/openvpn-docker
+    - https://github.com/kubernetes/charts/tree/master/stable/openvpn
+    - https://github.com/jfelten/helm-charts
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/openvpn-4.2.3/openvpn-4.2.3.tgz
+    version: 4.2.3
   php:
   - apiVersion: v1
     created: "2020-07-10T08:22:32.886812319Z"
