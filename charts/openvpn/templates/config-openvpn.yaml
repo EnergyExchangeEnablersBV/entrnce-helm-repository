@@ -103,9 +103,6 @@ data:
   configure.sh: |-
       #!/bin/sh
 
-      # Add to fix routing on Entrnce Cluster
-      sysctl -w net.ipv4.ip_forward=1
-
       cidr2mask() {
          # Number of args to shift, 255..255, first non-255 byte, zeroes
          set -- $(( 5 - ($1 / 8) )) 255 255 255 255 $(( (255 << (8 - ($1 % 8))) & 255 )) 0 0 0
