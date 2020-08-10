@@ -552,6 +552,22 @@ entries:
     version: 0.0.9
   rds-proxy:
   - apiVersion: v1
+    created: "2020-08-10T12:44:56.252905157Z"
+    description: A proxy to access RDS in your VPC
+    digest: ccbd27b159f6e3008bb1c31cac8eb710c894e1aa171138e870b3fd3b21d9e974
+    home: https://entrnce.com/
+    icon: https://entrnce.com/
+    keywords:
+    - rds
+    - eks
+    maintainers:
+    - email: nick.hartjes@entrnce.com
+      name: Nick Hartjes
+    name: rds-proxy
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/rds-proxy-0.0.4/rds-proxy-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v1
     created: "2020-08-10T12:33:53.820892011Z"
     description: A proxy to access RDS in your VPC
     digest: a3533bafb51d0a44ceb4f251e445eabffa845245a5353bee7fe1549e6c0ce7c2
