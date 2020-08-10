@@ -9,7 +9,7 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 data:
-  {{- if hasKey .Values.nginx "defaultconf" }}
-  default.conf: |
-    {{ .Values.nginx.defaultconf | b64enc }}
+  {{- if hasKey .Values.nginx "nginxconf" }}
+  nginx.conf: |
+    {{ .Values.nginx.nginxconf | b64enc }}
     {{ end }}

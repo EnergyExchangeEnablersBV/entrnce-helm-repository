@@ -33,7 +33,8 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
             - name: {{ include "rds.fullname" . }}-config
-              mountPath: /etc/nginx/conf.d/
+              mountPath: /etc/nginx/
+              subPath: nginx.conf
           ports:
             - name: http
               containerPort: {{ .Values.containerPort }}
