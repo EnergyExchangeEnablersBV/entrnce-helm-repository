@@ -550,6 +550,23 @@ entries:
     urls:
     - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/php-0.0.9/php-0.0.9.tgz
     version: 0.0.9
+  rds-proxy:
+  - apiVersion: v1
+    created: "2020-08-10T12:26:45.684603302Z"
+    description: A proxy to access RDS in your VPC
+    digest: 7320538ecf1bcd5f26d3d82776a673979c617e30b1a3f27379bea02d3ff40b0b
+    home: https://entrnce.com/
+    icon: https://entrnce.com/
+    keywords:
+    - rds
+    - eks
+    maintainers:
+    - email: nick.hartjes@entrnce.com
+      name: Nick Hartjes
+    name: rds-proxy
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/rds-proxy-0.0.2/rds-proxy-0.0.2.tgz
+    version: 0.0.2
   spring-boot:
   - apiVersion: v1
     created: "2020-08-10T12:13:35.046067592Z"
