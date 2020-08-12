@@ -33,7 +33,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
             - name: {{ include "angular.fullname" . }}-config
-              mountPath: /etc/nginx/conf.d/
+              mountPath: /etc/nginx/conf.d/json
           ports:
             - name: http
               containerPort: {{ .Values.containerPort }}
