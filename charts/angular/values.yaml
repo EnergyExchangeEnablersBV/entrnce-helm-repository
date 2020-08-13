@@ -100,7 +100,7 @@ readinessProbe: {}
 nginx: {}
 #  defaultconf:
 
-entrnce: {}
+#entrnce: {}
 #  config01:
 #  config02:
 
@@ -134,3 +134,46 @@ entrnce: {}
 #      },
 #      "sentryDsn": "https://1c33bae7c12944b2b703347a9f539522:8329f0ab24b2411ca4ab8ee435f374f3@sentry.e-x-e.cloud/23"
 #    }
+
+
+entrnce:
+  config-customer.json:
+    {
+      "locale": "nl-NL",
+      "timezone": "Europe/Amsterdam",
+      "showTutorial": true,
+      "endPoints": {
+        "public": "/api/public",
+        "user": "/api/my-deal-platform/",
+        "dealPlatform": "/api/my-deal-platform/",
+        "auth": "/oidc/",
+        "entrnceCms": ""
+      },
+      "sentryDsn": "https://f5450944a7224e6d911462af1e7b783c@sentry.e-x-e.cloud/10"
+    }
+  config-public.json:
+    {
+      "locale": "nl-NL",
+      "timezone": "Europe/Amsterdam",
+      "endPoints": {
+        "public": "/api/public",
+        "user": "/api/my-deal-platform/",
+        "dealPlatform": "/api/my-deal-platform/",
+        "auth": "/oidc/",
+        "entrnceCms": ""
+      },
+      "sentryDsn": "https://f5450944a7224e6d911462af1e7b783c@sentry.e-x-e.cloud/10"
+    }
+  config-admin.json:
+    {
+      "locale": "nl-NL",
+      "timezone": "Europe/Amsterdam",
+      "showSampleActions": true,
+      "endPoints": {
+        "user": "/api/deal-platform/",
+        "dealPlatform": "/api/deal-platform/",
+        "auth": "/oidc/"
+      },
+      "ebaseUsageStartDate": "2017-07-31T00:00:00+02:00",
+      "sentryDsn": "https://f5450944a7224e6d911462af1e7b783c@sentry.e-x-e.cloud/10"
+    }

@@ -9,15 +9,6 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 data:
-  {{- if hasKey .Values.nginx "defaultconf" }}
-  default.conf: |
-    {{ .Values.nginx.defaultconf | b64enc }}
-    {{ end }}
-  {{- if hasKey .Values.entrnce "config01" }}
-  config01.json: |
-    {{ .Values.entrnce.config01 | toJson }}
-    {{ end }}
-  {{- if hasKey .Values.entrnce "config02" }}
-  config02.json: |
-    {{ .Values.entrnce.config02 | toJson }}
-    {{ end }}
+  {{- range $key, $value := .Values.entrnce }}
+  {{ $key }}: {{ $value | toJson | quote }}
+  {{- end }}
