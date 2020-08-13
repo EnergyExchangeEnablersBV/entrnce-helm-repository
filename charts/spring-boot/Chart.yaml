@@ -7,7 +7,9 @@ keywords:
 - spring-boot
 home: https://spring.io
 icon: https://spring.io/img/homepage/icon-spring-boot.svg
-version: 0.0.16
+version: 0.0.17
 maintainers:
   - name: Nick Hartjes
     email: nick.hartjes@entrnce.com
+  - name: Nick Hol
+    email: nick.hol@entrnce.com

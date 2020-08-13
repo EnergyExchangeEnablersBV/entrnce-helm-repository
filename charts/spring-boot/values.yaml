@@ -29,6 +29,12 @@ podAnnotations: {}
 ## The list of ports that your app listens on
 containerPort: 8080
 
+# default gitops profile to create appllication-gitops.yaml
+profile: gitops
+
+cluster:
+  name: ""
+
 extraEnv: {}
   ## Extra environment variables to be injected
   # DATABASE_ENGINE: mysql
@@ -45,6 +51,10 @@ securityContext: {}
 #   runAsUser: 1000
 #   fsGroup: 1000
 
+spring:
+  config:
+    type: file
+    content: {}
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
