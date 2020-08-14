@@ -409,6 +409,24 @@ entries:
     urls:
     - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/entrncecronjobs-0.0.1/entrncecronjobs-0.0.1.tgz
     version: 0.0.1
+  keycloak:
+  - apiVersion: v1
+    created: "2020-08-14T09:07:40.752196211Z"
+    description: Keycloak
+    digest: caf4793a62690f94ee3883f297c2c58a8f8bbf9f79a87a292fe5bdde1d06bf0a
+    home: https://spring.io
+    icon: https://spring.io/img/homepage/icon-spring-boot.svg
+    keywords:
+    - keycloak
+    maintainers:
+    - email: nick.hartjes@entrnce.com
+      name: Nick Hartjes
+    - email: nick.hol@entrnce.com
+      name: Nick Hol
+    name: keycloak
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/keycloak-0.0.1/keycloak-0.0.1.tgz
+    version: 0.0.1
   openvpn:
   - apiVersion: v1
     appVersion: 1.1.0
