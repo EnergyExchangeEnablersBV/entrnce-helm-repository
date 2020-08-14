@@ -5,7 +5,7 @@ keywords:
   - keycloak
 home: https://spring.io
 icon: https://spring.io/img/homepage/icon-spring-boot.svg
-version: 0.0.5
+version: 0.0.6
 maintainers:
   - name: Nick Hartjes
     email: nick.hartjes@entrnce.com
