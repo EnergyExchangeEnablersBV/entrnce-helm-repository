@@ -1,5 +1,5 @@
 {{- if .Values.ingress.enabled -}}
-{{- $fullName := include "spring.fullname" . }}
+{{- $fullName := include "keycloak.fullname" . }}
 {{- $httpPort := .Values.service.httpPort }}
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
@@ -9,11 +9,11 @@ metadata:
     {{ $key }}: {{ $value | quote }}
   {{- end }}
   labels:
-    app: {{ template "spring.name" . }}
+    app: {{ template "keycloak.name" . }}
     heritage: "{{ .Release.Service }}"
     release: "{{ .Release.Name }}"
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-  name: {{ template "spring.fullname" . }}
+  name: {{ template "keycloak.fullname" . }}
   namespace: {{ .Release.Namespace | quote }}
 spec:
   rules:
