@@ -294,6 +294,22 @@ entries:
     version: 0.0.1
   entrnce-cronjobs:
   - apiVersion: v1
+    created: "2020-08-25T08:18:15.201863031Z"
+    description: Helm chart for deploying cronjobs for Entrnce
+    digest: bd1c47e12624f68e6a8f84048335c8c8ae67467976211d2dcd87403fb7aa58c9
+    home: https://entrnce.com/
+    keywords:
+    - cronjobs
+    maintainers:
+    - email: nick.hartjes@entrnce.com
+      name: Nick Hartjes
+    - email: nick.hol@entrnce.com
+      name: Nick Hol
+    name: entrnce-cronjobs
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/entrnce-cronjobs-0.0.9/entrnce-cronjobs-0.0.9.tgz
+    version: 0.0.9
+  - apiVersion: v1
     created: "2020-08-25T06:35:19.957505169Z"
     description: Helm chart for deploying cronjobs for Entrnce
     digest: 54a734cd3f3f1201bfcd777ebc4a40ed43675021baa6d479af989a9901716843
