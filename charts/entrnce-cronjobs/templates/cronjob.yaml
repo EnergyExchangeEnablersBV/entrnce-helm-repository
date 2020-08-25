@@ -34,7 +34,7 @@ spec:
         spec:
           containers:
             - name: {{ $name }}- {{ .trigger | lower }}
-              image: energyexchangeenablers/docker-curl
+              image: "energyexchangeenablers/docker-curl"
               command: ["/bin/bash","-c", "
             {{- $curlStatement }} '{{ $baseUrl }}{{ .type }}/
             {{- .trigger }}
