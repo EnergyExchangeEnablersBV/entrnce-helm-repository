@@ -4,7 +4,7 @@ appName: "entrnce"
 nameOverride: ""
 fullnameOverride: ""
 
-curlStatement: "curl -v -X GET --header 'Content-Type: application/json' --header 'Accept: application/json'"
+curlStatement: "curl -v -X POST --user $basic-auth-admin-username:$basic-auth-admin-password --header 'Content-Type: application/json' --header 'Accept: application/json'"
 baseUrl: "https://google.com/"
 
 scheduleOffset: "utcsummertime"
@@ -13,10 +13,10 @@ scheduleOffset: "utcsummertime"
 # je in de trigger schedule het volgende in: 0 30 11 * * *
 # dus altijd lokale tijd min 2 uur.
 
-triggers:
-  - trigger: '?test'
-    type: "search"
-    schedule: "45 * * * *"
+triggers: {}
+  # - trigger: '?test'
+  #   type: "search"
+  #   schedule: "45 * * * *"
 #  - trigger: "CheckBidConfirmationReceived"
 #    type: "notificationTrigger"
 #    schedule: "36 11 * * *"
