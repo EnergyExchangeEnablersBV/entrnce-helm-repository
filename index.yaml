@@ -292,6 +292,23 @@ entries:
     urls:
     - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/aws-ecr-credential-0.0.1/aws-ecr-credential-0.0.1.tgz
     version: 0.0.1
+  cronjobs:
+  - apiVersion: v1
+    created: "2020-08-28T06:11:52.876796358Z"
+    description: Helm chart for deploying cronjobs for Entrnce
+    digest: 3188c5914a9d5f58c562fcdd39dcd17774f3f515b8d2a7a7e10bc093a12eaf45
+    home: https://entrnce.com/
+    keywords:
+    - cronjobs
+    maintainers:
+    - email: nick.hartjes@entrnce.com
+      name: Nick Hartjes
+    - email: nick.hol@entrnce.com
+      name: Nick Hol
+    name: cronjobs
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/cronjobs-0.0.1/cronjobs-0.0.1.tgz
+    version: 0.0.1
   entrnce-cronjobs:
   - apiVersion: v1
     created: "2020-08-25T11:54:59.166544007Z"
