@@ -14,9 +14,9 @@ scheduleOffset: "utcsummertime"
 # dus altijd lokale tijd min 2 uur.
 
 triggers: {}
-  # - trigger: '?test'
-  #   type: "search"
-  #   schedule: "45 * * * *"
+#   - trigger: '?test'
+#     type: "search"
+#     schedule: "45 * * * *"
 #  - trigger: "CheckBidConfirmationReceived"
 #    type: "notificationTrigger"
 #    schedule: "36 11 * * *"

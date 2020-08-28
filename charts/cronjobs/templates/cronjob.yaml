@@ -13,10 +13,11 @@
 
   {{- range (required "Provide a values-file. E.g. `helm ... -f values.yaml -f values/triggers.yaml`" .Values.triggers) }}
 ---
+  {{ $cronName := (printf "%s-cron-%s" $name .trigger) }}
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: {{ $name }}-tr-{{ .trigger | lower }}
+  name: {{ $cronName | lower | trunc 52 }}
   namespace: {{ $releaseNamespace | quote }}
   labels:
     app: {{ $name }}
