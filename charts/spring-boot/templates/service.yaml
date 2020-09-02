@@ -30,9 +30,9 @@ spec:
 {{- if hasKey .Values.service "nodePort" }}
     nodePort: {{ .Values.service.nodePort }}
 {{- end }}
-    - name: debug
-      port: 5005
-      targetPort: http
+      - name: debug
+        port: 5005
+        targetPort: 5005
   selector:
     app: {{ template "spring.name" . }}
     release: {{ .Release.Name | quote }}
