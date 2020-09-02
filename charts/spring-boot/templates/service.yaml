@@ -24,12 +24,15 @@ spec:
   loadBalancerIP: {{ default "" .Values.service.loadBalancerIP | quote }}
   {{- end }}
   ports:
-  - name: http
+    - name: http
     port: {{ .Values.service.httpPort }}
     targetPort: http
 {{- if hasKey .Values.service "nodePort" }}
     nodePort: {{ .Values.service.nodePort }}
 {{- end }}
+    - name: debug
+      port: 5005
+      targetPort: http
   selector:
     app: {{ template "spring.name" . }}
     release: {{ .Release.Name | quote }}

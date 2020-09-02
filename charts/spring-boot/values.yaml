@@ -136,6 +136,8 @@ podDisruptionBudget:
   enabled: false
   minAvailable: 1
 
+debugMode: false
+
 keel:
   # keel policy (all/major/minor/patch/force)
   policy: force

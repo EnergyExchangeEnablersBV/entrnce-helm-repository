@@ -55,19 +55,25 @@ spec:
             {{- if hasKey .Values.spring "profile" }}
             - name: SPRING_PROFILES_ACTIVE
               value: {{ .Values.spring.profile }}
-            {{- end }}
-              {{- if .Values.spring.trustKubernetesCertificates }}
+              {{- end }}
+            {{- if .Values.spring.trustKubernetesCertificates }}
             - name: KUBERNETES_TRUST_CERTIFICATES
               value: "true"
-              {{- end }}
+            {{- end }}
             {{- if hasKey .Values.spring.config "secretName" }}
             - name: SPRING_CONFIG_ADDITIONAL_LOCATION
               value: "file:/config/secret.yml"
             {{- end }}
+            - name: JAVA_ENABLE_DEBUG
+              {{- if .Values.debugMode }}
+              value: "true"
+              {{- else }}
+              value: "false"
+            {{- end }}
             {{- range $key, $value := .Values.extraEnv }}
             - name: {{ $key }}
               value: {{ $value | quote }}
-            {{- end }}
+          {{- end }}
           volumeMounts:
             - name: data
               mountPath: /data
