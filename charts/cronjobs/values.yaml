@@ -4,7 +4,7 @@ appName: "entrnce"
 nameOverride: ""
 fullnameOverride: ""
 
-curlStatement: "curl -v -X POST --user $basic-auth-admin-username:$basic-auth-admin-password --header 'Content-Type: application/json' --header 'Accept: application/json'"
+curlStatement: "curl -v -X POST --user ${basic-auth-admin-username}:${basic-auth-admin-password} --header 'Content-Type: application/json' --header 'Accept: application/json'"
 baseUrl: "https://google.com/"
 
 scheduleOffset: "utcsummertime"
