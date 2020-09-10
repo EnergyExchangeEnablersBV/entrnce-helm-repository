@@ -36,7 +36,7 @@ spec:
       template:
         spec:
           containers:
-            - name: {{ $name }}- {{ .trigger | lower }}
+            - name: {{ $name }}-{{ .trigger | lower }}
               image: "energyexchangeenablers/docker-curl"
               command: [ "/bin/bash","-c", "
             {{- $curlStatement }} '{{ $baseUrl }}{{ .type }}/
