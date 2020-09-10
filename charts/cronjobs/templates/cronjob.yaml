@@ -10,6 +10,8 @@
   {{- $baseUrl := .Values.baseUrl -}}
   {{- $scheduleOffset := .Values.scheduleOffset -}}
   {{- $secretKeyRefEnv := .Values.secretKeyRefEnv  -}}
+  {{- $successfulJobsHistoryLimit := .Values.successfulJobsHistoryLimit  -}}
+  {{- $failedJobsHistoryLimit := .Values.failedJobsHistoryLimit  -}}
 
   {{- range (required "Provide a values-file. E.g. `helm ... -f values.yaml -f values/triggers.yaml`" .Values.triggers) }}
 ---
@@ -26,17 +28,17 @@ metadata:
     heritage: {{ $releaseService }}
     scheduleOffset: {{ $scheduleOffset }}
 spec:
-  successfulJobsHistoryLimit: 3
-  failedJobsHistoryLimit: 3
+  successfulJobsHistoryLimit: {{ $successfulJobsHistoryLimit }}
+  failedJobsHistoryLimit: {{ $failedJobsHistoryLimit }}
   schedule: {{ .schedule }}
   jobTemplate:
     spec:
       template:
         spec:
           containers:
-            - name: {{ $name }}-{{ .trigger | lower }}
+            - name: {{ $name }}- {{ .trigger | lower }}
               image: "energyexchangeenablers/docker-curl"
-              command: ["/bin/bash","-c", "
+              command: [ "/bin/bash","-c", "
             {{- $curlStatement }} '{{ $baseUrl }}{{ .type }}/
             {{- .trigger }}
             {{- if .from }}?timeFrom={{ .from }}{{ end }}

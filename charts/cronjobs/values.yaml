@@ -4,6 +4,9 @@ appName: "entrnce"
 nameOverride: ""
 fullnameOverride: ""
 
+successfulJobsHistoryLimit: 3
+failedJobsHistoryLimit: 3
+
 curlStatement: "curl -v -X POST --user $BASIC_AUTH_ADMIN_USERNAME:$BASIC_AUTH_ADMIN_PASSWORD --header 'Content-Type: application/json' --header 'Accept: application/json'"
 baseUrl: "https://google.com/"
 
