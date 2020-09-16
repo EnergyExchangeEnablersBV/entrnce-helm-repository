@@ -47,7 +47,7 @@ spec:
           {{ toYaml .Values.readinessProbe | indent 12 }}
       {{- end }}
       restartPolicy: Always
-      serviceAccountName: {{ template "angular.serviceAccountName" . }}
+      serviceAccountName: {{ .Release.Namespace }}-{{ template "angular.fullname" . }}
       securityContext:
       {{ toYaml .Values.securityContext | indent 8 }}
       imagePullSecrets:
