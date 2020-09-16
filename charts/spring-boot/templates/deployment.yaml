@@ -26,10 +26,10 @@ spec:
         release: {{ .Release.Name }}
       {{- if .Values.podAnnotations }}
       annotations:
-        {{ toYaml .Values.podAnnotations | indent 8 }}
-      {{ end }}
+      {{ toYaml .Values.podAnnotations | indent 8 }}
+    {{ end }}
     spec:
-      serviceAccountName: {{ template "spring.serviceAccountName" . }}
+      serviceAccountName: {{ template "spring.serviceAccountName" . }}- {{ .Release.Namespace }}
       {{- if  .Values.securityContext }}
       securityContext:
       {{ toYaml .Values.securityContext | indent 8 }}
