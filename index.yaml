@@ -605,6 +605,23 @@ entries:
     version: 0.0.1
   keycloak:
   - apiVersion: v1
+    created: "2020-09-16T09:58:23.52476849Z"
+    description: Keycloak
+    digest: 98c7d74e8493c2289a717dcb8045fc9f0e6e37933b8a64d8a0e56cd8ab83e26a
+    home: https://spring.io
+    icon: https://spring.io/img/homepage/icon-spring-boot.svg
+    keywords:
+    - keycloak
+    maintainers:
+    - email: nick.hartjes@entrnce.com
+      name: Nick Hartjes
+    - email: nick.hol@entrnce.com
+      name: Nick Hol
+    name: keycloak
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/keycloak-0.0.8/keycloak-0.0.8.tgz
+    version: 0.0.8
+  - apiVersion: v1
     created: "2020-09-16T09:26:46.874999349Z"
     description: Keycloak
     digest: 91046849f31836f955eb8cff3046ee6637af189b3e48b4a7d1c324defa8e2d12
