@@ -29,7 +29,7 @@ spec:
       {{ toYaml .Values.podAnnotations | indent 8 }}
     {{ end }}
     spec:
-      serviceAccountName: {{ template "spring.serviceAccountName" . }}- {{ .Release.Namespace }}
+      serviceAccountName: {{ .Release.Namespace }}-{{ template "spring.fullname" . }}
       {{- if  .Values.securityContext }}
       securityContext:
       {{ toYaml .Values.securityContext | indent 8 }}

@@ -2,7 +2,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: {{ template "spring.fullname" . }}- {{ .Release.Namespace }}
+  name: {{ .Release.Namespace }}-{{ template "spring.fullname" . }}
   namespace: {{ .Release.Namespace | quote }}
   labels:
     app: {{ template "spring.name" . }}
@@ -17,7 +17,7 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: {{ template "spring.fullname" . }}- {{ .Release.Namespace }}
+  name: {{ .Release.Namespace }}-{{ template "spring.fullname" . }}
   labels:
     app: {{ template "spring.name" . }}
     chart: {{ template "spring.chart" . }}
@@ -26,9 +26,9 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: {{ template "spring.fullname" . }}- {{ .Release.Namespace }}
+  name: {{ .Release.Namespace }}-{{ template "spring.fullname" . }}
 subjects:
-  - name: {{ template "spring.fullname" . }}- {{ .Release.Namespace }}
+  - name: {{ .Release.Namespace }}-{{ template "spring.fullname" . }}
     namespace: {{ .Release.Namespace | quote }}
     kind: ServiceAccount
   {{- end -}}
