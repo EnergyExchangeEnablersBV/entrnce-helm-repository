@@ -4,7 +4,7 @@ name: cronjobs
 keywords:
   - cronjobs
 home: https://entrnce.com/
-version: 0.0.5
+version: 0.0.6
 maintainers:
   - name: Nick Hartjes
     email: nick.hartjes@entrnce.com
