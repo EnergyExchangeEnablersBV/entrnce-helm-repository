@@ -94,7 +94,7 @@ readinessProbe: {}
 
 nodeSelector: {}
 
-tolerations: []
+tolerations: {}
 
 affinity: {}
 
