@@ -1,6 +1,6 @@
-{{ if eq .Values.statefullSet.enabled false}}
+{{ if .Values.statefullSet.enabled }}
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ include "spring.fullname" . }}
   namespace: {{ .Release.Namespace | quote }}
@@ -30,7 +30,7 @@ spec:
     {{ toYaml .Values.podAnnotations | indent 8 }}
     {{ end }}
     spec:
-      serviceAccountName: {{ .Release.Namespace }}-{{ template "spring.fullname" . }}
+      serviceAccountName: {{ .Release.Namespace }}- {{ template "spring.fullname" . }}
       {{- if  .Values.securityContext }}
       securityContext:
       {{ toYaml .Values.securityContext | indent 8 }}
@@ -86,36 +86,38 @@ spec:
             - name: secret-file
               mountPath: /app/config/secret.yml
               subPath: secret.yml
-          {{- end }}
+            {{- end }}
+            - name: {{ .Values.statefullSet.name }}
+              mountPath: {{ .Values.statefullSet.path }}
           ports:
             - name: http
               containerPort: {{ .Values.containerPort }}
               protocol: TCP
           {{- if .Values.livenessProbe }}
           livenessProbe:
-{{ toYaml .Values.livenessProbe | indent 12 }}
+          {{ toYaml .Values.livenessProbe | indent 12 }}
           {{- end }}
           {{- if .Values.readinessProbe }}
           readinessProbe:
-{{ toYaml .Values.readinessProbe | indent 12 }}
+          {{ toYaml .Values.readinessProbe | indent 12 }}
           {{- end }}
           resources:
-{{ toYaml .Values.resources | indent 12 }}
+      {{ toYaml .Values.resources | indent 12 }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
-{{ toYaml . | indent 8 }}
+      {{ toYaml . | indent 8 }}
       {{- end }}
       {{- with .Values.affinity }}
       affinity:
-{{ toYaml . | indent 8 }}
+      {{ toYaml . | indent 8 }}
       {{- end }}
       {{- with .Values.tolerations }}
       tolerations:
-{{ toYaml . | indent 8 }}
+      {{ toYaml . | indent 8 }}
       {{- end }}
       volumes:
         - name: data
-          emptyDir: {}
+          emptyDir: { }
         {{- if and (eq .Values.spring.config.type "file") (hasKey .Values.spring.config "content") }}
         - name: config-volume
           configMap:
@@ -128,4 +130,12 @@ spec:
       {{- end }}
       imagePullSecrets:
         - name: {{ .Values.imageCredentials.name }}
+  volumeClaimTemplates:
+    - metadata:
+        name: {{ .Values.statefullSet.name }}
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: {{ .Values.statefullSet.storage }}
   {{ end }}

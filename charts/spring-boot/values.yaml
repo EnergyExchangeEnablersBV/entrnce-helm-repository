@@ -21,9 +21,15 @@ serviceAccount:
 rbac:
   create: true
 
-podAnnotations: {}
+podAnnotations: { }
 #  prometheus.io/scrape: "true"
 #  prometheus.io/path: "/actuator/prometheus"
+
+statefullSet:
+  enabled: false
+  name: transaction-logs
+  path: /app/transaction-logs
+  storage: 1Gi
 
 
 ## The list of ports that your app listens on
