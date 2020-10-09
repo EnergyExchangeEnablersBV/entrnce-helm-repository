@@ -26,7 +26,7 @@ podAnnotations: { }
 #  prometheus.io/path: "/actuator/prometheus"
 
 statefullSet:
-  enabled: false
+  enabled: true
   name: transaction-logs
   path: /app/transaction-logs
   storage: 1Gi
@@ -60,7 +60,11 @@ securityContext: {}
 spring:
   config:
     type: file
-    content: {}
+    content: |-
+      ---
+      logging:
+        level:
+          root: WARN
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little

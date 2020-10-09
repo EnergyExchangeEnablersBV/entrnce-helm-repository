@@ -16,6 +16,7 @@ metadata:
     keel.sh/pollSchedule: {{ .Values.keel.pollSchedule | quote }}
 spec:
   replicas: {{ .Values.replicaCount }}
+  serviceName: {{ template "spring.fullname" . }}
   selector:
     matchLabels:
       app: {{ include "spring.name" . }}
@@ -30,7 +31,7 @@ spec:
     {{ toYaml .Values.podAnnotations | indent 8 }}
     {{ end }}
     spec:
-      serviceAccountName: {{ .Release.Namespace }}- {{ template "spring.fullname" . }}
+      serviceAccountName: {{ .Release.Namespace }}-{{ template "spring.fullname" . }}
       {{- if  .Values.securityContext }}
       securityContext:
       {{ toYaml .Values.securityContext | indent 8 }}
@@ -102,7 +103,7 @@ spec:
           {{ toYaml .Values.readinessProbe | indent 12 }}
           {{- end }}
           resources:
-      {{ toYaml .Values.resources | indent 12 }}
+          {{ toYaml .Values.resources | indent 12 }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
       {{ toYaml . | indent 8 }}
