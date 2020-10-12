@@ -112,10 +112,6 @@ spec:
       affinity:
       {{ toYaml . | indent 8 }}
       {{- end }}
-      {{- with .Values.tolerations }}
-      tolerations:
-      {{ toYaml . | indent 8 }}
-      {{- end }}
       volumes:
         - name: data
           emptyDir: { }
@@ -139,4 +135,4 @@ spec:
         resources:
           requests:
             storage: {{ .Values.statefullSet.storage }}
-  {{ end }}
+{{ end }}
