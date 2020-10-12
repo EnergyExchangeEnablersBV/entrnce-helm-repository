@@ -1,0 +1,15 @@
+apiVersion: v1
+description: Helm chart for deploying basic Spring Boot applications
+name: spring-boot
+keywords:
+- spring
+- spring-cloud
+- spring-boot
+home: https://spring.io
+icon: https://spring.io/img/homepage/icon-spring-boot.svg
+version: 0.0.31
+maintainers:
+  - name: Nick Hartjes
+    email: nick.hartjes@entrnce.com
+  - name: Nick Hol
+    email: nick.hol@entrnce.com
