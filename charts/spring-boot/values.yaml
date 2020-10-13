@@ -26,7 +26,7 @@ podAnnotations: { }
 #  prometheus.io/path: "/actuator/prometheus"
 
 statefullSet:
-  enabled: true
+  enabled: false
   name: transaction-logs
   path: /app/transaction-logs
   storage: 1Gi
@@ -65,32 +65,26 @@ spring:
       logging:
         level:
           root: WARN
-resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #  cpu: 100m
-  #  memory: 128Mi
-  # requests:
-  #  cpu: 100m
-  #  memory: 128Mi
-
-## uncomment and modify the following livenessProbe and readinessProbe.
-## These defaults should work with anything that uses the spring health actuator.
-livenessProbe: {}
-#  httpGet:
-#    path: /actuator/health
-#    port: http
-#  initialDelaySeconds: 300
-#  periodSeconds: 10
-readinessProbe: {}
-#  httpGet:
-#    path: /actuator/health
-#    port: http
-#  initialDelaySeconds: 60
-#  periodSeconds: 10
+livenessProbe:
+  httpGet:
+    path: /appinfo/health
+    port: 8080
+    scheme: HTTP
+  initialDelaySeconds: 90
+  timeoutSeconds: 5
+readinessProbe:
+  httpGet:
+    path: /appinfo/health
+    port: 8080
+  initialDelaySeconds: 90
+  timeoutSeconds: 5
+resources:
+  limits:
+    cpu: 4
+    memory: 8192Mi
+  requests:
+    cpu: 400m
+    memory: 512Mi
 
 nodeSelector: {}
 
