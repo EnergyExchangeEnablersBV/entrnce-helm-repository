@@ -27,13 +27,13 @@ spec:
         release: {{ .Release.Name }}
       {{- if .Values.podAnnotations }}
       annotations:
-        {{ toYaml .Values.podAnnotations | indent 8 }}
+{{ toYaml .Values.podAnnotations | indent 8 }}
     {{ end }}
     spec:
       serviceAccountName: {{ .Release.Namespace }}-{{ template "spring.fullname" . }}
       {{- if  .Values.securityContext }}
       securityContext:
-      {{ toYaml .Values.securityContext | indent 8 }}
+{{ toYaml .Values.securityContext | indent 8 }}
       {{ end }}
       containers:
         - name: {{ .Chart.Name }}
@@ -93,25 +93,25 @@ spec:
               protocol: TCP
           {{- if .Values.livenessProbe }}
           livenessProbe:
-          {{ toYaml .Values.livenessProbe | indent 12 }}
+{{ toYaml .Values.livenessProbe | indent 12 }}
           {{- end }}
           {{- if .Values.readinessProbe }}
           readinessProbe:
-          {{ toYaml .Values.readinessProbe | indent 12 }}
+{{ toYaml .Values.readinessProbe | indent 12 }}
           {{- end }}
           resources:
-          {{ toYaml .Values.resources | indent 12 }}
+{{ toYaml .Values.resources | indent 12 }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
-      {{ toYaml . | indent 8 }}
+{{ toYaml . | indent 8 }}
       {{- end }}
       {{- with .Values.affinity }}
       affinity:
-      {{ toYaml . | indent 8 }}
+{{ toYaml . | indent 8 }}
       {{- end }}
       {{- with .Values.tolerations }}
       tolerations:
-      {{ toYaml . | indent 8 }}
+{{ toYaml . | indent 8 }}
       {{- end }}
       volumes:
         - name: data
