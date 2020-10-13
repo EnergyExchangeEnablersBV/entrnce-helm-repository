@@ -1000,6 +1000,25 @@ entries:
     version: 0.0.2
   spring-boot:
   - apiVersion: v1
+    created: "2020-10-13T09:14:44.085590895Z"
+    description: Helm chart for deploying basic Spring Boot applications
+    digest: f44cd51486fb64d00388bd6103cff49587983f5ce2d43fd1dda6da542ed8f34d
+    home: https://spring.io
+    icon: https://spring.io/img/homepage/icon-spring-boot.svg
+    keywords:
+    - spring
+    - spring-cloud
+    - spring-boot
+    maintainers:
+    - email: nick.hartjes@entrnce.com
+      name: Nick Hartjes
+    - email: nick.hol@entrnce.com
+      name: Nick Hol
+    name: spring-boot
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/spring-boot-0.0.33/spring-boot-0.0.33.tgz
+    version: 0.0.33
+  - apiVersion: v1
     created: "2020-10-13T08:55:22.189938763Z"
     description: Helm chart for deploying basic Spring Boot applications
     digest: 3404cef92256fbf896bd02d6ee633fd96c577026fe71097a777f6f885351470e
