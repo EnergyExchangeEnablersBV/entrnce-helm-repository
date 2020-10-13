@@ -1,6 +1,6 @@
 apiVersion: v1
 description: Helm chart for deploying basic Spring Boot applications
-name: spring-boot
+name: spring-boot-2
 keywords:
 - spring
 - spring-cloud
