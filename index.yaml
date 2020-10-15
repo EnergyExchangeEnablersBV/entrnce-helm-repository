@@ -2,6 +2,23 @@ apiVersion: v1
 entries:
   angular:
   - apiVersion: v1
+    created: "2020-10-15T12:30:03.371578666Z"
+    description: Helm chart for deploying basic Angular applications
+    digest: c3241dfd4ea97eca373c4245ea0583a381620ed0880387877da9473e5c419a58
+    home: https://angular.io/
+    icon: https://angular.io/assets/images/favicons/favicon.ico
+    keywords:
+    - angular
+    - front-end
+    - nginx
+    maintainers:
+    - email: nick.hartjes@entrnce.com
+      name: Nick Hartjes
+    name: angular
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/angular-0.0.16/angular-0.0.16.tgz
+    version: 0.0.16
+  - apiVersion: v1
     created: "2020-09-16T09:23:48.612760262Z"
     description: Helm chart for deploying basic Angular applications
     digest: 8fcc3b349003da462a1e4535b53b6e00f4169644aef3271618d37caa97041e0c
@@ -999,6 +1016,25 @@ entries:
     - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/rds-proxy-0.0.2/rds-proxy-0.0.2.tgz
     version: 0.0.2
   spring-boot:
+  - apiVersion: v1
+    created: "2020-10-15T12:30:03.556350446Z"
+    description: Helm chart for deploying basic Spring Boot applications
+    digest: 3777d4615f88fa5c898e8bd2f11224c6ba7a1d8001e246cb86eb69d58d7b7673
+    home: https://spring.io
+    icon: https://spring.io/img/homepage/icon-spring-boot.svg
+    keywords:
+    - spring
+    - spring-cloud
+    - spring-boot
+    maintainers:
+    - email: nick.hartjes@entrnce.com
+      name: Nick Hartjes
+    - email: nick.hol@entrnce.com
+      name: Nick Hol
+    name: spring-boot
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/spring-boot-0.0.34/spring-boot-0.0.34.tgz
+    version: 0.0.34
   - apiVersion: v1
     created: "2020-10-13T09:14:44.085590895Z"
     description: Helm chart for deploying basic Spring Boot applications
