@@ -11,6 +11,7 @@ metadata:
     keel.sh/policy: {{ .Values.keel.policy  }}
     keel.sh/trigger: {{ .Values.keel.trigger  }}
     keel.sh/approvals: {{ .Values.keel.approvals | quote }}
+    keel.sh/match-tag: true 
   annotations:
     keel.sh/pollSchedule: {{ .Values.keel.pollSchedule | quote }}
 spec:
