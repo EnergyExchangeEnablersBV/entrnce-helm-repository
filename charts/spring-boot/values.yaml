@@ -35,6 +35,10 @@ statefullSet:
 ## The list of ports that your app listens on
 containerPort: 8080
 
+hazelcast:
+  enabled: false
+  port: 5701
+
 # default gitops profile to create appllication-gitops.yaml
 profile: gitops
 

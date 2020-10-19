@@ -95,6 +95,11 @@ spec:
             - name: http
               containerPort: {{ .Values.containerPort }}
               protocol: TCP
+          {{- if .Values.hazelcast.enabled }}
+            - name: hazelcast 
+              containerPort: {{ .Values.hazelcast.port }}
+              protocol: TCP
+          {{- end }}
           {{- if .Values.livenessProbe }}
           livenessProbe:
 {{ toYaml .Values.livenessProbe | indent 12 }}
