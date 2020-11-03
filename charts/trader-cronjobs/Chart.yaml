@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: v2
 description: Helm chart for deploying trader-cronjobs for Entrnce
 name: trader-cronjobs
 keywords:
@@ -10,4 +10,3 @@ maintainers:
     email: nick.hartjes@entrnce.com
   - name: Nick Hol
     email: nick.hol@entrnce.com
-
