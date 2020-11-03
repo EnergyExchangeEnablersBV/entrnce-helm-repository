@@ -1712,4 +1712,21 @@ entries:
     urls:
     - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/spring-boot-2-0.0.31/spring-boot-2-0.0.31.tgz
     version: 0.0.31
+  trader-cronjobs:
+  - apiVersion: v2
+    created: "2020-11-03T18:33:21.681249914Z"
+    description: Helm chart for deploying trader-cronjobs for Entrnce
+    digest: 94cbcfd3114ded03f3d9be5c5df414c15228265deb2b4778282079e82e38314b
+    home: https://entrnce.com/
+    keywords:
+    - trader-cronjobs
+    maintainers:
+    - email: nick.hartjes@entrnce.com
+      name: Nick Hartjes
+    - email: nick.hol@entrnce.com
+      name: Nick Hol
+    name: trader-cronjobs
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/trader-cronjobs-0.0.1/trader-cronjobs-0.0.1.tgz
+    version: 0.0.1
 generated: "0001-01-01T00:00:00Z"
