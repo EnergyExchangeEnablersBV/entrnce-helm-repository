@@ -37,30 +37,30 @@ spec:
       template:
         spec:
           containers:
-            - name: {{ $name }}-{{ .name | lower }}
-              image: {{ $image }}
-              command: [ "python", "{{ .command }}'"]
-              {{- if $secretKeyRefEnv}}
-              env:
-                {{- range $secretKeyRefEnvKey, $secretKeyRefEnvValue := $secretKeyRefEnv }}
-                {{- range $secretName, $secretValue := $secretKeyRefEnvValue }}
-                {{- range $key, $value := $secretValue }}
-                - name: {{ $value }}
-                  valueFrom:
-                    secretKeyRef:
-                      name: {{ $secretKeyRefEnvKey}}
-                      key: {{ $key }}
-                {{- end }}
-                {{- end }}
-                {{- end }}
+          - name: {{ $name }}-{{ .name | lower }}
+            image: {{ $image }}
+            command: [ "python", "{{ .command }}'"]
+            {{- if $secretKeyRefEnv}}
+            env:
+              {{- range $secretKeyRefEnvKey, $secretKeyRefEnvValue := $secretKeyRefEnv }}
+              {{- range $secretName, $secretValue := $secretKeyRefEnvValue }}
+              {{- range $key, $value := $secretValue }}
+              - name: {{ $value }}
+                valueFrom:
+                  secretKeyRef:
+                    name: {{ $secretKeyRefEnvKey}}
+                    key: {{ $key }}
               {{- end }}
-              volumeMounts:
-                - name: config-volume
-                  mountPath: /settings/settings.yml
-                  subPath: settings.yml
+              {{- end }}
+              {{- end }}
+            {{- end }}
+            volumeMounts:
+              - name: config-volume
+                mountPath: /settings/settings.yml
+                subPath: settings.yml
           restartPolicy: Never
-      volumes:
-        - name: config-volume
-          configMap:
-            name: {{ $fullName }}
+          volumes:
+            - name: config-volume
+              configMap:
+                name: {{ $fullName }}
 {{- end }}
