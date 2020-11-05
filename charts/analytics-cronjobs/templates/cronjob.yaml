@@ -52,8 +52,15 @@ spec:
                       key: {{ $key }}
                 {{- end }}
                 {{- end }}
-            {{- end }}
-          {{- end }}
+                {{- end }}
+              {{- end }}
+              volumeMounts:
+                - name: config-volume
+                  mountPath: /settings/settings.yml
+                  subPath: settings.yml
           restartPolicy: Never
-  {{- end}}
-
+      volumes:
+        - name: config-volume
+          configMap:
+            name: {{ $fullName }}
+{{- end }}
