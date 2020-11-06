@@ -155,5 +155,7 @@ keel:
   pollSchedule: "@every 1m"
   # approvals required to proceed with an update
   approvals: 1
+  # deadline in hours
+  approvalDeadline: 336
   # only makes a difference when used with 'force' policy, will only update if tag matches :dev->:dev, :prod->:prod
   match-tag: true
