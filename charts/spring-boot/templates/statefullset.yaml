@@ -13,6 +13,7 @@ metadata:
     keel.sh/policy: {{ .Values.keel.policy  }}
     keel.sh/trigger: {{ .Values.keel.trigger  }}
     keel.sh/approvals: {{ .Values.keel.approvals | quote }}
+    keel.sh/approvalDeadline: {{ .Values.keel.approvalDeadline }}
     keel.sh/match-tag: "true" 
     keel.sh/pollSchedule: {{ .Values.keel.pollSchedule | quote }}
 spec:
