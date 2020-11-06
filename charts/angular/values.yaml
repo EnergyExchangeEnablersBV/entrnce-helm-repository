@@ -136,3 +136,6 @@ nginx: {}
 #      "sentryDsn": "https://1c33bae7c12944b2b703347a9f539522:8329f0ab24b2411ca4ab8ee435f374f3@sentry.e-x-e.cloud/23"
 #    }
 entrnce: {}
+robots: |-
+  User-agent: *
+  Disallow: /
