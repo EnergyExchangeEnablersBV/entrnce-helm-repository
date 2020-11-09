@@ -1,3 +1,4 @@
+{{- if .Values.robots }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -10,4 +11,4 @@ metadata:
     heritage: {{ .Release.Service }}
 data:
   robots.txt: {{ .Values.robots | toJson }}
-  
+{{- end }}

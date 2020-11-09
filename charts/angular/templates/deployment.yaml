@@ -36,8 +36,10 @@ spec:
           volumeMounts:
             - name: {{ include "angular.fullname" . }}-config
               mountPath: /home
+            {{- if .Values.robots }}
             - name: {{ include "angular.fullname" . }}-robots
               mountPath: /robots
+            {{- end}}
           ports:
             - name: http
               containerPort: {{ .Values.containerPort }}
