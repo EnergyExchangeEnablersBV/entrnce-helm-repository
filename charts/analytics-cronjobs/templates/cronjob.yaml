@@ -56,7 +56,7 @@ spec:
             {{- end }}
             volumeMounts:
               - name: config-volume
-                mountPath: /settings/settings.yml
+                mountPath: /settings/settings.yaml
                 subPath: settings.yml
           restartPolicy: Never
           volumes:
