@@ -39,7 +39,7 @@ spec:
           containers:
           - name: {{ $name }}-{{ .name | lower }}
             image: {{ $image }}
-            command: [ "python", "{{ .command }}'"]
+            command: [ "python", "{{ .command }}"]
             {{- if $secretKeyRefEnv}}
             env:
               {{- range $secretKeyRefEnvKey, $secretKeyRefEnvValue := $secretKeyRefEnv }}
