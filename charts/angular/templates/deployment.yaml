@@ -62,4 +62,9 @@ spec:
         - name: {{ include "angular.fullname" . }}-config
           configMap:
             name: {{ include "angular.fullname" . }}-config
+        {{- if .Values.robots }}
+        - name: {{ include "angular.fullname" . }}-robots
+          configMap:
+            name: {{ include "angular.fullname" . }}-robots
+        {{- end}}
 
