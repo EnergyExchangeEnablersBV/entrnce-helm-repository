@@ -39,6 +39,7 @@ spec:
           containers:
           - name: {{ $name }}-{{ .name | lower }}
             image: {{ $image }}
+            imagePullPolicy: Always
             command: [ "python", "{{ .command }}"]
             {{- if $secretKeyRefEnv}}
             env:
