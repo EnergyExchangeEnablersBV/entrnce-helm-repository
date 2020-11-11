@@ -2,6 +2,20 @@ apiVersion: v1
 entries:
   analytics-cronjobs:
   - apiVersion: v2
+    created: "2020-11-11T09:56:26.856889006Z"
+    description: Helm chart for deploying analytics- for Entrnce
+    digest: 2097e6f1121ab8d9aff5f85ce8dcf14236e4d2d8aaf17b5dc7db0c1c40932f8e
+    home: https://entrnce.com/
+    keywords:
+    - analytics-cronjobs
+    maintainers:
+    - email: nick.hartjes@entrnce.com
+      name: Nick Hartjes
+    name: analytics-cronjobs
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/analytics-cronjobs-0.0.6/analytics-cronjobs-0.0.6.tgz
+    version: 0.0.6
+  - apiVersion: v2
     created: "2020-11-10T15:05:08.712535619Z"
     description: Helm chart for deploying analytics- for Entrnce
     digest: 6714f7f67ef3b8fa1a76f55c49f044d6eda06dd6a397a697987f08bc52dc349f
