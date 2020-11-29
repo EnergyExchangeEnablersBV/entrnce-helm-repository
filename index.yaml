@@ -1960,6 +1960,22 @@ entries:
     version: 0.0.31
   trader-cronjobs:
   - apiVersion: v2
+    created: "2020-11-29T10:31:26.992615485Z"
+    description: Helm chart for deploying trader-cronjobs for Entrnce
+    digest: ea9f6010f1cf296a4e90a7bf520a1de526f1f26def8228ffa161c06aef58f0b9
+    home: https://entrnce.com/
+    keywords:
+    - trader-cronjobs
+    maintainers:
+    - email: nick.hartjes@entrnce.com
+      name: Nick Hartjes
+    - email: nick.hol@entrnce.com
+      name: Nick Hol
+    name: trader-cronjobs
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/trader-cronjobs-0.0.2/trader-cronjobs-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
     created: "2020-11-03T18:33:21.681249914Z"
     description: Helm chart for deploying trader-cronjobs for Entrnce
     digest: 94cbcfd3114ded03f3d9be5c5df414c15228265deb2b4778282079e82e38314b
