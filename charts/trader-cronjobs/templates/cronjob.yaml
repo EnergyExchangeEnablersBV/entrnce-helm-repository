@@ -40,7 +40,8 @@ spec:
         spec:
           containers:
             - name: {{ $name }}- {{ .trigger | lower }}
-              image: "energyexchangeenablers/docker-curl"
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
               command: [ "/bin/bash","-c", "
             {{- $curlStatement }} '{{ $baseUrl }}{{ .type }}/
             {{- .trigger }}
