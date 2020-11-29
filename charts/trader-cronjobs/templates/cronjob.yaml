@@ -9,6 +9,9 @@
   {{- $curlStatement := .Values.curlStatement -}}
   {{- $baseUrl := .Values.baseUrl -}}
   {{- $scheduleOffset := .Values.scheduleOffset -}}
+  {{- $repository := .Values.image.repository  -}}
+  {{- $tag := .Values.image.tag  -}}
+  {{- $pullPolicy := .Values.image.pullPolicy  -}}
   {{- $secretKeyRefEnv := .Values.secretKeyRefEnv  -}}
   {{- $successfulJobsHistoryLimit := .Values.successfulJobsHistoryLimit  -}}
   {{- $failedJobsHistoryLimit := .Values.failedJobsHistoryLimit  -}}
@@ -39,9 +42,9 @@ spec:
       template:
         spec:
           containers:
-            - name: {{ $name }}- {{ .trigger | lower }}
-              image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-              imagePullPolicy: {{ .Values.image.pullPolicy }}
+            - name: {{ $name }}-{{ .trigger | lower }}
+              image: "{{ $repository }}:{{ $tag }}"
+              imagePullPolicy: {{ $pullPolicy }}
               command: [ "/bin/bash","-c", "
             {{- $curlStatement }} '{{ $baseUrl }}{{ .type }}/
             {{- .trigger }}
