@@ -1,24 +1,26 @@
 # We need to declare variabels to use in the range loop
-  # Default .Values references won't work
-  {{- $name := include "cronjobs.name" .  -}}
-  {{- $fullName := include "cronjobs.fullname" . -}}
-  {{- $chartName := include "cronjobs.chart" . -}}
-  {{- $releaseName := .Release.Name  -}}
-  {{- $releaseService := .Release.Service -}}
-  {{- $releaseNamespace := .Release.Namespace -}}
-  {{- $curlStatement := .Values.curlStatement -}}
-  {{- $baseUrl := .Values.baseUrl -}}
-  {{- $scheduleOffset := .Values.scheduleOffset -}}
-  {{- $repository := .Values.image.repository  -}}
-  {{- $tag := .Values.image.tag  -}}
-  {{- $pullPolicy := .Values.image.pullPolicy  -}}
-  {{- $secretKeyRefEnv := .Values.secretKeyRefEnv  -}}
-  {{- $successfulJobsHistoryLimit := .Values.successfulJobsHistoryLimit  -}}
-  {{- $failedJobsHistoryLimit := .Values.failedJobsHistoryLimit  -}}
+# Default .Values references won't work
+{{- $name := include "cronjobs.name" .  -}}
+{{- $fullName := include "cronjobs.fullname" . -}}
+{{- $chartName := include "cronjobs.chart" . -}}
+{{- $releaseName := .Release.Name  -}}
+{{- $releaseService := .Release.Service -}}
+{{- $releaseNamespace := .Release.Namespace -}}
+{{- $curlStatement := .Values.curlStatement -}}
+{{- $baseUrl := .Values.baseUrl -}}
+{{- $scheduleOffset := .Values.scheduleOffset -}}
+{{- $repository := .Values.image.repository  -}}
+{{- $tag := .Values.image.tag  -}}
+{{- $pullPolicy := .Values.image.pullPolicy  -}}
+{{- $secretKeyRefEnv := .Values.secretKeyRefEnv  -}}
+{{- $successfulJobsHistoryLimit := .Values.successfulJobsHistoryLimit  -}}
+{{- $failedJobsHistoryLimit := .Values.failedJobsHistoryLimit  -}}
+{{- $slackEnabled := .Values.slack.enabled  -}}
+{{- $slackWebhookUrl := .Values.slack.webhookUrl  -}}
 
-  {{- range (required "Provide a values-file. E.g. `helm ... -f values.yaml -f values/triggers.yaml`" .Values.triggers) }}
+{{- range (required "Provide a values-file. E.g. `helm ... -f values.yaml -f values/triggers.yaml`" .Values.triggers) }}
 ---
-  {{ $cronName := (printf "%s-cron-%s" $name .trigger) }}
+{{ $cronName := (printf "%s-cron-%s" $name .trigger) }}
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
@@ -45,11 +47,20 @@ spec:
             - name: {{ $name }}-{{ .trigger | lower }}
               image: "{{ $repository }}:{{ $tag }}"
               imagePullPolicy: {{ $pullPolicy }}
-              command: [ "/bin/bash","-c", "
-            {{- $curlStatement }} '{{ $baseUrl }}{{ .type }}/
-            {{- .trigger }}
-            {{- if .from }}?timeFrom={{ .from }}{{ end }}
-            {{- if .to }}&timeTo={{ .to }}{{ end }}'"]
+              command: ["/bin/bash"]
+              args:
+                - -c
+                - >-
+              {{- if .slackEnabled}}
+                  START=`date +%s` &&
+                  curl -X POST --data-urlencode "payload={\"text\": \"*Cronjob*: name \n*Namespace*: namespace\n *Status*: started\"}" {{- $slackWebhookUrl }} &&
+                  RESULT=$({{- $curlStatement }} '{{ $baseUrl }}{{ .type }}/{{- .trigger }}{{- if .from }}?timeFrom={{ .from }}{{ end }}{{- if .to }}&timeTo={{ .to }}{{ end }}') &&
+                  DIFF=$((`date +%s`- START)) &&
+                  MIN=$((DIFF/60)) &&
+                  curl -X POST --data-urlencode "payload={\"text\": \"*Cronjob*: name \n*Namespace*: namespace\n *Status*: ended\n *Time*: $MIN minutes\n *Result*: $RESULT\"}" {{- $slackWebhookUrl }} 
+              {{- else }}
+                  {{- $curlStatement }} '{{ $baseUrl }}{{ .type }}/{{- .trigger }}{{- if .from }}?timeFrom={{ .from }}{{ end }}{{- if .to }}&timeTo={{ .to }}{{ end }}'
+              {{- end }}
               {{- if $secretKeyRefEnv}}
               env:
                 {{- range $secretKeyRefEnvKey, $secretKeyRefEnvValue := $secretKeyRefEnv }}
