@@ -53,11 +53,11 @@ spec:
                 - >-
               {{- if $slackEnabled}}
                   START=`date +%s` &&
-                  curl -X POST --data-urlencode "payload={\"text\": \"*Cronjob*: name \n*Namespace*: namespace\n *Status*: started\"}"  {{- $slackWebhookUrl }} &&
+                  curl -X POST {{- $slackWebhookUrl }} --data-urlencode "payload={\"text\": \"*Cronjob*: name \n*Namespace*: namespace\n *Status*: started\"}" &&
                   RESULT=$({{- $curlStatement }} '{{ $baseUrl }}{{ .type }}/{{- .trigger }}{{- if .from }}?timeFrom={{ .from }}{{ end }}{{- if .to }}&timeTo={{ .to }}{{ end }}') &&
                   DIFF=$((`date +%s`- START)) &&
                   MIN=$((DIFF/60)) &&
-                  curl -X POST --data-urlencode "payload={\"text\": \"*Cronjob*: name \n*Namespace*: namespace\n *Status*: ended\n *Time*: $MIN minutes\n *Result*: $RESULT\"}"  {{- $slackWebhookUrl }} 
+                  curl -X POST {{- $slackWebhookUrl }} --data-urlencode "payload={\"text\": \"*Cronjob*: name \n*Namespace*: namespace\n *Status*: ended\n *Time*: $MIN minutes\n *Result*: $RESULT\"}" 
               {{- else }}
                   {{- $curlStatement }} '{{ $baseUrl }}{{ .type }}/{{- .trigger }}{{- if .from }}?timeFrom={{ .from }}{{ end }}{{- if .to }}&timeTo={{ .to }}{{ end }}'
               {{- end }}
