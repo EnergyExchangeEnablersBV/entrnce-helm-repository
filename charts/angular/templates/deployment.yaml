@@ -54,7 +54,9 @@ spec:
           lifecycle:
             preStop:
               exec:
-                command: ["sleep", "15"]
+                command:
+                  - sleep
+                  - '15'
       {{- end }}
       restartPolicy: Always
       serviceAccountName: {{ .Release.Namespace }}-{{ template "angular.fullname" . }}
