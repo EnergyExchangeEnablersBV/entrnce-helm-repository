@@ -7,7 +7,7 @@ keywords:
   - nginx
 home: https://angular.io/
 icon: https://angular.io/assets/images/favicons/favicon.ico
-version: 0.0.26
+version: 0.0.27
 maintainers:
   - name: Nick Hartjes
     email: nick.hartjes@entrnce.com
