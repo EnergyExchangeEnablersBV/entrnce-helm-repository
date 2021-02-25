@@ -87,6 +87,23 @@ entries:
     version: 0.0.1
   angular:
   - apiVersion: v1
+    created: "2021-02-25T10:40:29.208875718Z"
+    description: Helm chart for deploying basic Angular applications
+    digest: a581a9765c6262d128f1346b3d41740522c98b391240e655556cf030b05b9818
+    home: https://angular.io/
+    icon: https://angular.io/assets/images/favicons/favicon.ico
+    keywords:
+    - angular
+    - front-end
+    - nginx
+    maintainers:
+    - email: nick.hartjes@entrnce.com
+      name: Nick Hartjes
+    name: angular
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/angular-0.0.27/angular-0.0.27.tgz
+    version: 0.0.27
+  - apiVersion: v1
     created: "2021-02-25T09:50:41.178361851Z"
     description: Helm chart for deploying basic Angular applications
     digest: 352aa5c5af7300dcc70538855f2d9fe2c3c08d1d4804f2e4ef5d4accaf9ecad5
