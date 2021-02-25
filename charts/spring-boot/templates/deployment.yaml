@@ -89,6 +89,12 @@ spec:
               mountPath: /app/config/secret.yml
               subPath: secret.yml
           {{- end }}
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                  - sleep
+                  - '15'
           ports:
             - name: http
               containerPort: {{ .Values.containerPort }}
