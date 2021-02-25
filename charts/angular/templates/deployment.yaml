@@ -51,6 +51,10 @@ spec:
           {{- if .Values.readinessProbe }}
           readinessProbe:
           {{ toYaml .Values.readinessProbe | indent 12 }}
+          lifecycle:
+            preStop:
+              exec:
+                command: ["sleep", "15"]
       {{- end }}
       restartPolicy: Always
       serviceAccountName: {{ .Release.Namespace }}-{{ template "angular.fullname" . }}
