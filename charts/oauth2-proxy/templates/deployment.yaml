@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    k8s-app: {{ include "oauth2-proxy.name" . }}
+  name: {{ include "oauth2-proxy.fullname" . }}
+  namespace:
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: {{ include "oauth2-proxy.name" . }}
+  template:
+    metadata:
+      labels:
+        k8s-app: {{ include "oauth2-proxy.name" . }}
+    spec:
+      containers:
+        - args:
+            - --provider={{ .Values.args.provider }}
+            - --email-domain={{ .Values.args.emailDomain }}
+            - --client-id={{ .Values.args.clientId }}
+            - --client-secret={{ .Values.args.clientSecret }}
+            - --login-url={{ .Values.args.loginUrl }}
+            - --redeem-url={{ .Values.args.redeemUrl }}
+            - --validate-url={{ .Values.args.validateUrl }}
+            - --keycloak-group={{ .Values.args.keycloakGroup }}
+            - --http-address={{ .Values.args.httpAddress }}
+          env:
+            - name: {{ .Values.env.clientIdName }}
+              value: {{ .Values.env.clientIdValue }}
+            - name: {{ .Values.env.clientSecretName }}
+              value: {{ .Values.env.clientSecretValue }}
+            - name: {{ .Values.env.cookieSecretName }}
+              value: {{ .Values.env.cookieSecretValue }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: { { .Values.image.pullPolicy } }
+          name: {{ include "oauth2-proxy.name" . }}
+          ports:
+            - containerPort: {{ .Values.service.port }}
+              protocol: TCP

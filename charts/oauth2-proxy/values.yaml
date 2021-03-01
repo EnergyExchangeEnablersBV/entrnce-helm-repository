@@ -1,0 +1,98 @@
+# Default values for oauth2.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: quay.io/oauth2-proxy/oauth2-proxy
+  tag: latest
+  pullPolicy: Always
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 4180
+
+ingress:
+  enabled: false
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths: []
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+
+args:
+  provider: keycloak
+  emailDomain: *
+  keycloakGroup: /oauth2group
+  httpAddress: 0.0.0.0:4180
+  #  clientId: lekker-energie-oauth
+  #  clientSecret: d21b9c6a-9a26-457d-9a5e-557b29c26f1a
+  #  loginUrl: https://auth.{{ .Values.namespace }}.entrnce.cloud/auth/realms/lekker-energie/protocol/openid-connect/auth
+  #  redeemUrl: https://auth.{{ .Values.namespace }}.entrnce.cloud/auth/realms/lekker-energie/protocol/openid-connect/token
+  #  validateUrl: https://auth.{{ .Values.namespace }}.entrnce.cloud/auth/realms/lekker-energie/protocol/openid-connect/userinfo
+
+env:
+  clientIdName: OAUTH2_PROXY_CLIENT_ID
+  # clientIdValue: lekker-energie-oauth
+  clientSecretName: OAUTH2_PROXY_CLIENT_SECRET
+  # clientSecretValue: d21b9c6a-9a26-457d-9a5e-557b29c26f1a
+  cookieSecretName: OAUTH2_PROXY_COOKIE_SECRET
+  # cookieSecretValue: ZExQUmQxdTRiRDIxRXYvRnZGSWFYdz09

@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: lekker-oauth2-proxy
+  namespace: {{ .Values.namespace }}
+  annotations:
+    # Annotation for registration with kube-lego (getting a TLS certificate with LetsEncrypt)
+    kubernetes.io/tls-acme: "true"
+spec:
+  rules:
+    - host: lekker.{{ .Values.namespace }}.unserregionalstrom.de
+      http:
+        paths:
+          - backend:
+              serviceName: oauth2-proxy
+              servicePort: 4180
+            path: /oauth2
+  tls:
+    - hosts:
+        - lekker.{{ .Values.namespace }}.unserregionalstrom.de
+      secretName: {{ .Values.namespace }}-lekker-unserregionalstrom-tls

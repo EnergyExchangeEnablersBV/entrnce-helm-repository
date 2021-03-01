@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    k8s-app: {{ include "oauth2-proxy.name" . }}
+  name: {{ include "oauth2-proxy.fullname" . }}
+  namespace: {{ .Release.Namespace | quote }}
+spec:
+  ports:
+    - name: http
+      port: {{ .Values.service.httpPort }}
+      protocol: TCP
+      targetPort: {{ .Values.service.httpPort }}
+  selector:
+    k8s-app: {{ include "oauth2-proxy.name" . }}
