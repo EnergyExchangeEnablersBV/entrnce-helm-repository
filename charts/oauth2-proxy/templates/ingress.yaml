@@ -1,0 +1,22 @@
+{{- if .Values.ingress.enabled -}}
+{{- $fullName := include "oauth2-proxy.fullname" . }}
+{{- $httpPort := .Values.service.port }}
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+  {{- range $key, $value := .Values.ingress.annotations }}
+    {{ $key }}: {{ $value | quote }}
+  {{- end }}
+  name: {{ template "oauth2-proxy.fullname" . }}
+  namespace: {{ .Release.Namespace | quote }}
+spec:
+  {{- if .Values.ingress.hosts }}
+  rules:
+{{ toYaml .Values.ingress.hosts | indent 4 }}
+  {{- end -}}
+  {{- if .Values.ingress.tls }}
+  tls:
+{{ toYaml .Values.ingress.tls | indent 4 }}
+  {{- end -}}
+{{- end -}}
