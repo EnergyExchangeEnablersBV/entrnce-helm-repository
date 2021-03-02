@@ -9,18 +9,11 @@ image:
   tag: latest
   pullPolicy: Always
 
-imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
 serviceAccount:
-  # Specifies whether a service account should be created
   create: true
-  # Annotations to add to the service account
-  annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name: ""
 
 podAnnotations: {}
 
@@ -36,21 +29,26 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
+  enabled: true
   type: ClusterIP
   port: 4180
 
 ingress:
   enabled: false
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  hosts:
-    - host: chart-example.local
-      paths: []
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+  # annotations:
+  #    kubernetes.io/tls-acme: "true"
+  # hosts:
+  #   - host: some-host
+  #     http:
+  #       paths:
+  #         - backend:
+  #             serviceName: oauth2-proxy
+  #             servicePort: 4180
+  #           path: /oauth2
+  # tls:
+  #   - hosts:
+  #       - some-host
+  #     secretName: some-tls
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -77,22 +75,21 @@ tolerations: []
 
 affinity: {}
 
-
 args:
   provider: keycloak
-  emailDomain: *
+  emailDomain: '*'
   keycloakGroup: /oauth2group
   httpAddress: 0.0.0.0:4180
-  #  clientId: lekker-energie-oauth
-  #  clientSecret: d21b9c6a-9a26-457d-9a5e-557b29c26f1a
-  #  loginUrl: https://auth.{{ .Values.namespace }}.entrnce.cloud/auth/realms/lekker-energie/protocol/openid-connect/auth
-  #  redeemUrl: https://auth.{{ .Values.namespace }}.entrnce.cloud/auth/realms/lekker-energie/protocol/openid-connect/token
-  #  validateUrl: https://auth.{{ .Values.namespace }}.entrnce.cloud/auth/realms/lekker-energie/protocol/openid-connect/userinfo
+  # clientId: someKeycloakClientId
+  # clientSecret: someKeycloakClientSecret
+  # loginUrl: https://auth.some-namespace.entrnce.cloud/auth/realms/some-realm/protocol/openid-connect/auth
+  # redeemUrl: https://auth.some-namespace.entrnce.cloud/auth/realms/some-realm/protocol/openid-connect/token
+  # validateUrl: https://auth.some-namespace.entrnce.cloud/auth/realms/some-realm/protocol/openid-connect/userinfo
 
 env:
   clientIdName: OAUTH2_PROXY_CLIENT_ID
-  # clientIdValue: lekker-energie-oauth
+  # clientIdValue: someKeycloakClientId
   clientSecretName: OAUTH2_PROXY_CLIENT_SECRET
-  # clientSecretValue: d21b9c6a-9a26-457d-9a5e-557b29c26f1a
+  # clientSecretValue: someKeycloakClientSecret
   cookieSecretName: OAUTH2_PROXY_COOKIE_SECRET
-  # cookieSecretValue: ZExQUmQxdTRiRDIxRXYvRnZGSWFYdz09
+  # cookieSecretValue: someCookieSecret

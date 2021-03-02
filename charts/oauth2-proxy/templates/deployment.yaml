@@ -4,7 +4,7 @@ metadata:
   labels:
     k8s-app: {{ include "oauth2-proxy.name" . }}
   name: {{ include "oauth2-proxy.fullname" . }}
-  namespace:
+  namespace: {{ .Release.Namespace | quote }}
 spec:
   replicas: 1
   selector:
@@ -34,7 +34,7 @@ spec:
             - name: {{ .Values.env.cookieSecretName }}
               value: {{ .Values.env.cookieSecretValue }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: { { .Values.image.pullPolicy } }
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           name: {{ include "oauth2-proxy.name" . }}
           ports:
             - containerPort: {{ .Values.service.port }}

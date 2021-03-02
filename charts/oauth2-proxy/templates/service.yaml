@@ -8,8 +8,8 @@ metadata:
 spec:
   ports:
     - name: http
-      port: {{ .Values.service.httpPort }}
+      port: {{ .Values.service.port }}
       protocol: TCP
-      targetPort: {{ .Values.service.httpPort }}
+      targetPort: {{ .Values.service.port }}
   selector:
     k8s-app: {{ include "oauth2-proxy.name" . }}

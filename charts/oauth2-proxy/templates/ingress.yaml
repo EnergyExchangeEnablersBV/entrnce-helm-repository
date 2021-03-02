@@ -1,21 +1,22 @@
+{{- if .Values.ingress.enabled -}}
+{{- $fullName := include "oauth2-proxy.fullname" . }}
+{{- $httpPort := .Values.service.port }}
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: lekker-oauth2-proxy
-  namespace: {{ .Values.namespace }}
   annotations:
-    # Annotation for registration with kube-lego (getting a TLS certificate with LetsEncrypt)
-    kubernetes.io/tls-acme: "true"
+  {{- range $key, $value := .Values.ingress.annotations }}
+    {{ $key }}: {{ $value | quote }}
+  {{- end }}
+  name: {{ template "oauth2-proxy.fullname" . }}
+  namespace: {{ .Release.Namespace | quote }}
 spec:
+  {{- if .Values.ingress.hosts }}
   rules:
-    - host: lekker.{{ .Values.namespace }}.unserregionalstrom.de
-      http:
-        paths:
-          - backend:
-              serviceName: oauth2-proxy
-              servicePort: 4180
-            path: /oauth2
+{{ toYaml .Values.ingress.hosts | indent 4 }}
+  {{- end -}}
+  {{- if .Values.ingress.tls }}
   tls:
-    - hosts:
-        - lekker.{{ .Values.namespace }}.unserregionalstrom.de
-      secretName: {{ .Values.namespace }}-lekker-unserregionalstrom-tls
+{{ toYaml .Values.ingress.tls | indent 4 }}
+  {{- end -}}
+{{- end -}}
