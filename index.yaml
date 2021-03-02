@@ -1029,6 +1029,22 @@ entries:
     urls:
     - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/keycloak-0.0.1/keycloak-0.0.1.tgz
     version: 0.0.1
+  oauth2-proxy:
+  - apiVersion: v1
+    created: "2021-03-02T12:44:14.949481728Z"
+    description: Helm chart to configure the use of an oauth2 proxy for a keycloak
+      realm
+    digest: 6ce6d3811aef7363bba610c08998095b0eedcf216c4c9ff519a50918d28485d8
+    keywords:
+    - oauth2
+    - authentication
+    maintainers:
+    - email: raoul.blankestijn@entrnce.com
+      name: Raoul Blankestijn
+    name: oauth2-proxy
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/oauth2-proxy-0.0.1/oauth2-proxy-0.0.1.tgz
+    version: 0.0.1
   openvpn:
   - apiVersion: v1
     appVersion: 1.1.0
