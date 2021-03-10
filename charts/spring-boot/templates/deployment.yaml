@@ -118,10 +118,16 @@ spec:
       nodeSelector:
 {{ toYaml . | indent 8 }}
       {{- end }}
-      {{- with .Values.affinity }}
       affinity:
-{{ toYaml . | indent 8 }}
-      {{- end }}
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - {{ include "spring.name" . }}
+              topologyKey: "kubernetes.io/hostname"
       {{- with .Values.tolerations }}
       tolerations:
 {{ toYaml . | indent 8 }}
