@@ -1305,6 +1305,25 @@ entries:
     version: 0.0.2
   spring-boot:
   - apiVersion: v1
+    created: "2021-03-11T09:17:58.536486363Z"
+    description: Helm chart for deploying basic Spring Boot applications
+    digest: b0389bc4d1d494d31c43ee70bddd0183ca238c81012f7cd38b9c3913ab9e7429
+    home: https://spring.io
+    icon: https://spring.io/img/homepage/icon-spring-boot.svg
+    keywords:
+    - spring
+    - spring-cloud
+    - spring-boot
+    maintainers:
+    - email: nick.hartjes@entrnce.com
+      name: Nick Hartjes
+    - email: nick.hol@entrnce.com
+      name: Nick Hol
+    name: spring-boot
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/spring-boot-0.0.44/spring-boot-0.0.44.tgz
+    version: 0.0.44
+  - apiVersion: v1
     created: "2021-02-25T11:05:34.783218588Z"
     description: Helm chart for deploying basic Spring Boot applications
     digest: 3c49cc3d1db87b1a491b1bfd2d508c936b56b0c82d35a1a63e88b1b9a7951857
@@ -2062,6 +2081,22 @@ entries:
     - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/spring-boot-2-0.0.31/spring-boot-2-0.0.31.tgz
     version: 0.0.31
   trader-cronjobs:
+  - apiVersion: v2
+    created: "2021-03-11T09:17:58.610443698Z"
+    description: Helm chart for deploying trader-cronjobs for Entrnce
+    digest: 08c72451246fcf8672cc1bdbed02d0f4584d7cd4d11f0f9254a44f4199975de5
+    home: https://entrnce.com/
+    keywords:
+    - trader-cronjobs
+    maintainers:
+    - email: nick.hartjes@entrnce.com
+      name: Nick Hartjes
+    - email: nick.hol@entrnce.com
+      name: Nick Hol
+    name: trader-cronjobs
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/trader-cronjobs-0.0.8/trader-cronjobs-0.0.8.tgz
+    version: 0.0.8
   - apiVersion: v2
     created: "2021-02-05T12:59:45.731679774Z"
     description: Helm chart for deploying trader-cronjobs for Entrnce
