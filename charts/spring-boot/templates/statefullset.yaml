@@ -125,6 +125,16 @@ spec:
             secretName: {{ .Values.spring.config.secretName }}
       {{- end }}
       {{- if .Values.imageCredentials }}
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - {{ include "spring.name" . }}
+           topologyKey: "kubernetes.io/hostname"
       imagePullSecrets:
         - name: {{ .Values.imageCredentials.name }}
   {{ end }}

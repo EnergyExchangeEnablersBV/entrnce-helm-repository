@@ -94,8 +94,6 @@ nodeSelector: {}
 
 tolerations: {}
 
-affinity: {}
-
 service:
   enabled: true
   httpPort: 80
