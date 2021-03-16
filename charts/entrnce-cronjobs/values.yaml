@@ -1,0 +1,36 @@
+#generic
+namespace: "cluster-ops"
+appName: "entrnce-cronjob"
+nameOverride: ""
+fullnameOverride: ""
+
+successfulJobsHistoryLimit: 3
+failedJobsHistoryLimit: 3
+
+image: "350124346922.dkr.ecr.eu-central-1.amazonaws.com/entrnce/exe-analytics:master"
+
+# Voorbeeld: Als je wilt dat een job om 13:30 lokale tijd gedraaid moet worden vul
+# je in de trigger schedule het volgende in: 0 30 11 * * *
+# dus altijd lokale tijd min 2 uur.
+
+triggers: {}
+  # - name: 'Futures'
+  #   command: "/src/entrnce_price_curve/epc1_futures.py"
+  #   schedule: "0 3 * * *"
+  # - name: 'PriceCurve'
+  #   command: "/src/entrnce_price_curve/epc2_entrnce_price_curve.py"
+  #   schedule: "15 3 * * *"
+  # - name: 'FinanceChecks'
+  #   command: "/src/entrnce_checks/entrnce_checks.py"
+  #   schedule: "0 6 * * *"
+
+secretKeyRefEnv: {}
+#  secretname:
+#    - basic-auth-admin-username: BASIC_AUTH_ADMIN_USERNAME
+#    - basic-auth-admin-password: BASIC_AUTH_ADMIN_PASSWORD
+
+settings: |-
+  ---
+  logging:
+    level:
+      root: WARN

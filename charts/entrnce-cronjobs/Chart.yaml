@@ -1,0 +1,12 @@
+apiVersion: v2
+description: Helm chart for deploying analytics- for Entrnce
+name: entrnce-cronjobs
+keywords:
+  - entrnce-cronjobs
+home: https://entrnce.com/
+version: 0.0.1
+maintainers:
+  - name: Nick Hartjes
+    email: nick.hartjes@entrnce.com
+  - name: Wilco ten Wolde
+    email: wilco.ten.wolde@entrnce.com
