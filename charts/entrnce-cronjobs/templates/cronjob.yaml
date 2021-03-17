@@ -50,7 +50,10 @@ spec:
           - name: {{ $name }}-{{ .name | lower }}
             image: {{ $image }}
             imagePullPolicy: Always
-            command: ["{{ .command }}"]
+            command: ["/bin/sh"]
+            args:
+              - -c
+              - {{ .command }}
             {{- if or $secretKeyRefEnv $extraEnv}}
             env:
               {{- if $extraEnv}}
