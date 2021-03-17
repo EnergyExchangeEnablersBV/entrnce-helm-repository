@@ -7,10 +7,20 @@
   {{- $releaseService := .Release.Service -}}
   {{- $releaseNamespace := .Release.Namespace -}}
   {{- $secretKeyRefEnv := .Values.secretKeyRefEnv  -}}
+  {{- $extraEnv := .Values.extraEnv  -}}
   {{- $scheduleOffset := .Values.scheduleOffset -}}
   {{- $successfulJobsHistoryLimit := .Values.successfulJobsHistoryLimit  -}}
   {{- $failedJobsHistoryLimit := .Values.failedJobsHistoryLimit  -}}
   {{- $image := .Values.image  -}}
+
+  {{- $settingsEnabled := .Values.settings.enabled }}
+  {{- $settingsName := .Values.settings.name }}
+  {{- $settingsPath := .Values.settings.path }}
+  {{- $settingsSubPath := .Values.settings.subPath }}
+
+  {{- $volumeEnabled := .Values.persistentVolume.enabled }}
+  {{- $volumeName := .Values.persistentVolume.name }}
+  {{- $volumePath := .Values.persistentVolume.path }}
 
 {{- range (required "Provide a values-file. E.g. `helm ... -f values.yaml -f values/triggers.yaml`" .Values.triggers) }}
 ---
@@ -41,8 +51,15 @@ spec:
             image: {{ $image }}
             imagePullPolicy: Always
             command: ["{{ .command }}"]
-            {{- if $secretKeyRefEnv}}
+            {{- if or $secretKeyRefEnv $extraEnv}}
             env:
+              {{- if $extraEnv}}
+              {{- range $key, $value := $extraEnv }}
+              - name: {{ $key }}
+                value: {{ $value | quote }}
+              {{- end }}
+              {{- end }}
+              {{- if $secretKeyRefEnv}}
               {{- range $secretKeyRefEnvKey, $secretKeyRefEnvValue := $secretKeyRefEnv }}
               {{- range $secretName, $secretValue := $secretKeyRefEnvValue }}
               {{- range $key, $value := $secretValue }}
@@ -54,14 +71,30 @@ spec:
               {{- end }}
               {{- end }}
               {{- end }}
+              {{- end }}
             {{- end }}
+            {{- if or $settingsEnabled $volumeEnabled }}
             volumeMounts:
-              - name: config-volume
-                mountPath: /settings/settings.yaml
-                subPath: settings.yml
+              {{- if $settingsEnabled }}
+              - name: {{ $settingsName }}
+                mountPath: {{ $settingsPath }}
+                subPath: {{ $settingsSubPath }}
+              {{- end }}
+              {{- if $volumeEnabled }}
+              - name: {{ $volumeName }}
+                mountPath: {{ $volumePath }}
+              {{- end }}
+            {{- end }}
           restartPolicy: Never
+          {{- if or $settingsEnabled $volumeEnabled }}
           volumes:
-            - name: config-volume
+            - name: {{ $settingsName }}
               configMap:
                 name: {{ $fullName }}
+            {{- if $volumeEnabled }}
+            - name: {{ $volumeName }}
+              persistentVolumeClaim:
+                claimName: {{ $volumeName }}
+            {{- end }}
+          {{- end }}
 {{- end }}
