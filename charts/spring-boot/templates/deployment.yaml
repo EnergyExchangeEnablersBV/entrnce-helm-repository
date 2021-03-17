@@ -121,13 +121,13 @@ spec:
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
+            labelSelector:
               matchExpressions:
               - key: app
                 operator: In
                 values:
                 - {{ include "spring.name" . }}
-           topologyKey: "kubernetes.io/hostname"
+            topologyKey: "kubernetes.io/hostname"
       {{- with .Values.tolerations }}
       tolerations:
 {{ toYaml . | indent 8 }}
