@@ -1,3 +1,4 @@
+{{ if .Values.settings.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -10,4 +11,5 @@ metadata:
     heritage: {{ .Release.Service }}
 data:
   settings.yml:
-    {{ toYaml .Values.settings | indent 4  }}
+    {{ toYaml .Values.settings.data | indent 4  }}
+{{ end }}

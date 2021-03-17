@@ -14,23 +14,54 @@ image: "350124346922.dkr.ecr.eu-central-1.amazonaws.com/entrnce/exe-analytics:ma
 # dus altijd lokale tijd min 2 uur.
 
 triggers: {}
-  # - name: 'Futures'
-  #   command: "/src/entrnce_price_curve/epc1_futures.py"
-  #   schedule: "0 3 * * *"
-  # - name: 'PriceCurve'
-  #   command: "/src/entrnce_price_curve/epc2_entrnce_price_curve.py"
-  #   schedule: "15 3 * * *"
-  # - name: 'FinanceChecks'
-  #   command: "/src/entrnce_checks/entrnce_checks.py"
-  #   schedule: "0 6 * * *"
+# triggers:
+#   - name: 'Futures'
+#     command: "python /src/entrnce_price_curve/epc1_futures.py"
+#     schedule: "0 3 * * *"
+#   - name: 'PriceCurve'
+#     command: "/src/entrnce_price_curve/epc2_entrnce_price_curve.py"
+#     schedule: "15 3 * * *"
+#   - name: 'FinanceChecks'
+#     command: "/src/entrnce_checks/entrnce_checks.py"
+#     schedule: "0 6 * * *"
+
+extraEnv: {}
+# extraEnv:
+  ## Extra environment variables to be injected
+  # DATABASE_ENGINE: mysql
+  # DATABASE_HOST: mysql
+  # DATABASE_NAME: spring
+  # DATABASE_USERNAME: spring
+  # DATABASE_PASSWORD: spring
 
 secretKeyRefEnv: {}
-#  secretname:
-#    - basic-auth-admin-username: BASIC_AUTH_ADMIN_USERNAME
-#    - basic-auth-admin-password: BASIC_AUTH_ADMIN_PASSWORD
+# secretKeyRefEnv:
+#   secretname:
+#     - mysql-password: MYSQL_PASSWORD
 
-settings: |-
-  ---
-  logging:
-    level:
-      root: WARN
+secrets: {}
+# secrets:
+#   finance:
+#     - amazon-aws-s3-access-key: amazon-aws-s3-access-key
+#     - amazon-aws-s3-secret-key: amazon-aws-s3-secret-key
+
+cluster:
+  name: entrnce-eks
+
+settings:
+  enabled: false
+  name: config-volume
+  path: /settings/settings.yaml
+  subPath: settings.yml
+  data: |-
+    ---
+    logging:
+      level:
+        root: WARN
+
+persistentVolume:
+  enabled: false
+  name: transaction-logs
+  path: /app/transaction-logs
+  storage: 1Gi
+  storageClassName: gp2
