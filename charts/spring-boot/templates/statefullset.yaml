@@ -134,7 +134,7 @@ spec:
                 operator: In
                 values:
                 - {{ include "spring.name" . }}
-           topologyKey: "kubernetes.io/hostname"
+            topologyKey: "kubernetes.io/hostname"
       imagePullSecrets:
         - name: {{ .Values.imageCredentials.name }}
   {{ end }}
