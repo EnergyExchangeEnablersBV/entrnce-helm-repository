@@ -64,6 +64,16 @@ spec:
       {{ toYaml .Values.securityContext | indent 8 }}
       imagePullSecrets:
       - name: {{ .Values.imageCredentials.name }}
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - {{ include "angular.name" . }}
+            topologyKey: "kubernetes.io/hostname"
       volumes:
         - name: {{ include "angular.fullname" . }}-config
           configMap:
