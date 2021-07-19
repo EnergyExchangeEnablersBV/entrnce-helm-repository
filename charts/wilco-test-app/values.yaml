@@ -1,0 +1,34 @@
+image:
+  repository: 345669064005.dkr.ecr.eu-central-1.amazonaws.com/entrnce/test-app-wilco:int
+  pullPolicy: Always
+
+name: "wilco-test-app"
+
+service:
+  enabled: true
+  port: 8080
+
+ingress:
+  enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: wilco-test-app.test.entrnce.cloud
+  tls: true
+
+configmap:
+  enabled: true
+  conf: 2
+  title: Deze zin komt uit de configmap via helm!
+
+springprofile: "prod"
+
+
+resources: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
