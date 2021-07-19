@@ -959,6 +959,17 @@ entries:
     urls:
     - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/entrncecronjobs-0.0.1/entrncecronjobs-0.0.1.tgz
     version: 0.0.1
+  helm-wilco-test-app:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-07-19T14:50:29.303519206Z"
+    description: A Helm chart for Kubernetes
+    digest: e96b1050bc44d789b5a7f6d1d76e743e6d9688097915d58df5a2893ac01b1099
+    name: helm-wilco-test-app
+    type: application
+    urls:
+    - https://github.com/EnergyExchangeEnablersBV/entrnce-helm-repository/releases/download/helm-wilco-test-app-0.1.0/helm-wilco-test-app-0.1.0.tgz
+    version: 0.1.0
   keycloak:
   - apiVersion: v1
     created: "2020-09-16T09:58:23.52476849Z"
