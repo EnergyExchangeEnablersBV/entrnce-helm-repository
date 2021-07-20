@@ -1,5 +1,5 @@
 image:
-  repository: 345669064005.dkr.ecr.eu-central-1.amazonaws.com/entrnce/test-app-wilco:int
+  repository: nickhartjes/dummy-container
   pullPolicy: Always
 
 name: "wilco-test-app"
